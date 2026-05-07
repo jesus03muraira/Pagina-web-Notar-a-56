@@ -4,12 +4,16 @@ const heroBg = `${base}/images/Foto.fachada.jpg`;
 ---
 
 <section class="hero" style={`background-image: url('${heroBg}')`}>
-  <h1 class="hero-title">Notaría Pública 56</h1>
+  <div class="hero-title-wrap">
+    <span class="hero-line"></span>
+    <h1 class="hero-title">Notaría Pública 56</h1>
+    <span class="hero-line"></span>
+  </div>
 </section>
 
 <style>
   .hero {
-    min-height: 85vh;
+    min-height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -19,20 +23,45 @@ const heroBg = `${base}/images/Foto.fachada.jpg`;
     padding: 2rem 1.5rem;
   }
 
+  .hero-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 90%;
+  }
+
+  .hero-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(220, 200, 154, 0.55);
+    min-width: 2rem;
+    max-width: 6rem;
+  }
+
   .hero-title {
-    color: var(--color-white);
-    font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 7vw, 5rem);
-    font-weight: 700;
+    font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 2.2vw, 1.7rem);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #dcc89a;
     text-align: center;
-    line-height: 1.15;
-    letter-spacing: 0.02em;
+    line-height: 1.4;
     margin: 0;
+    padding-left: 0.32em;
+    white-space: nowrap;
   }
 
   @media (max-width: 600px) {
     .hero {
-      min-height: 65vh;
+      min-height: 90vh;
+    }
+    .hero-line {
+      max-width: 2rem;
+    }
+    .hero-title {
+      font-size: clamp(0.75rem, 3.2vw, 1rem);
+      letter-spacing: 0.25em;
     }
   }
 </style>
