@@ -86,7 +86,7 @@ import Layout from '../layouts/Layout.astro';
             <span class="info-icon">📍</span>
             <div>
               <strong>Dirección</strong>
-              <p>Av. Juárez 100, Centro Histórico<br />Ciudad de México, CDMX, C.P. 06000</p>
+              <p>Av. Cordillera 11, Cordillera Residencial Fase Dos<br />C.P. 66196, Santa Catarina, N.L.</p>
             </div>
           </div>
 
@@ -115,13 +115,26 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
 
-        <!-- Mapa placeholder -->
-        <div class="mapa-placeholder">
-          <div class="mapa-inner">
-            <span class="mapa-pin">📍</span>
-            <p>Av. Juárez 100, Centro Histórico</p>
-            <p class="mapa-sub">Ciudad de México</p>
-          </div>
+        <!-- Mapa Google Maps -->
+        <div class="mapa-wrapper">
+          <iframe
+            src="https://maps.google.com/maps?q=Av.+Cordillera+11,+Sin+Nombre+de+Col+28,+Cordillera+Residencial+Fase+Dos,+66196+Cdad.+Santa+Catarina,+N.L.&output=embed&z=16"
+            width="100%"
+            height="280"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación Notaría Pública No. 56"
+          ></iframe>
+          <a
+            href="https://maps.google.com/maps?q=Av.+Cordillera+11,+Sin+Nombre+de+Col+28,+Cordillera+Residencial+Fase+Dos,+66196+Cdad.+Santa+Catarina,+N.L."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mapa-link"
+          >
+            Ver en Google Maps →
+          </a>
         </div>
       </aside>
     </div>
@@ -326,34 +339,31 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-gold);
   }
 
-  .mapa-placeholder {
-    background: var(--color-navy);
+  .mapa-wrapper {
     border-radius: 2px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
     border: 1px solid var(--color-border);
   }
 
-  .mapa-inner {
-    text-align: center;
-  }
-
-  .mapa-pin {
-    font-size: 2rem;
+  .mapa-wrapper iframe {
     display: block;
-    margin-bottom: 0.5rem;
+    width: 100%;
   }
 
-  .mapa-inner p {
-    color: rgba(255,255,255,0.85);
-    font-size: 0.9rem;
+  .mapa-link {
+    display: block;
+    background: var(--color-navy);
+    color: var(--color-gold);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    transition: background 0.2s;
   }
 
-  .mapa-sub {
-    color: var(--color-gold) !important;
-    font-size: 0.8rem !important;
+  .mapa-link:hover {
+    background: var(--color-navy-light);
   }
 
   @media (max-width: 860px) {
