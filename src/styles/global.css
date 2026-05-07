@@ -117,6 +117,17 @@ img {
   color: var(--color-navy);
 }
 
+.btn-outline-dark {
+  background: transparent;
+  color: var(--color-navy);
+  border-color: var(--color-navy);
+}
+
+.btn-outline-dark:hover {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
 @media (max-width: 768px) {
   :root {
     --spacing-section: 3rem;
