@@ -1,0 +1,172 @@
+---
+const navLinks = [
+  { href: '/', label: 'Inicio' },
+  { href: '/#servicios', label: 'Servicios' },
+  { href: '/#nosotros', label: 'Nosotros' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/contacto', label: 'Contacto' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">⚖</span>
+      <div class="logo-text">
+        <span class="logo-main">Notaría Pública</span>
+        <span class="logo-sub">No. 56</span>
+      </div>
+    </a>
+
+    <nav class="nav" id="nav">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          class={`nav-link ${currentPath === link.href ? 'active' : ''}`}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-navy);
+    border-bottom: 3px solid var(--color-gold);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.5rem;
+    gap: 1rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    font-size: 1.75rem;
+    color: var(--color-gold);
+    line-height: 1;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .logo-main {
+    color: var(--color-white);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+
+  .logo-sub {
+    color: var(--color-gold);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  .nav {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+  }
+
+  .nav-link {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: 2px;
+    transition: color 0.2s, background 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-gold);
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-white);
+    transition: all 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+
+    .nav {
+      display: none;
+      position: absolute;
+      top: 4.5rem;
+      left: 0;
+      right: 0;
+      background: var(--color-navy-dark);
+      flex-direction: column;
+      padding: 1rem 1.5rem;
+      border-bottom: 3px solid var(--color-gold);
+      gap: 0;
+    }
+
+    .nav.open {
+      display: flex;
+    }
+
+    .nav-link {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      width: 100%;
+    }
+
+    .nav-link:last-child {
+      border-bottom: none;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('nav');
+  toggle?.addEventListener('click', () => {
+    nav?.classList.toggle('open');
+  });
+</script>

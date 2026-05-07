@@ -1,0 +1,211 @@
+---
+---
+
+<section class="section nosotros-section" id="nosotros">
+  <div class="container nosotros-layout">
+    <div class="nosotros-text">
+      <p class="section-subtitle">Quiénes somos</p>
+      <h2 class="section-title">Una notaría con<br />historia y compromiso</h2>
+      <div class="section-divider"></div>
+      <p>
+        La Notaría Pública No. 56 fue fundada con la misión de acercar la fe pública
+        a los ciudadanos con un trato cercano, precios justos y procesos transparentes.
+        Nuestro titular, el Lic. Notario, cuenta con más de 25 años de trayectoria en
+        el ejercicio del derecho notarial.
+      </p>
+      <p>
+        Creemos que cada escritura, cada testamento y cada poder notarial representa
+        un momento de vida importante para nuestros clientes. Por eso atendemos cada
+        caso con la misma dedicación y rigor jurídico.
+      </p>
+
+      <ul class="valores-list">
+        <li>
+          <span class="valor-icon">✦</span>
+          <div>
+            <strong>Integridad</strong>
+            <span>Actuamos siempre conforme a la ley y la ética profesional.</span>
+          </div>
+        </li>
+        <li>
+          <span class="valor-icon">✦</span>
+          <div>
+            <strong>Confidencialidad</strong>
+            <span>Todos los asuntos son tratados con absoluta discreción.</span>
+          </div>
+        </li>
+        <li>
+          <span class="valor-icon">✦</span>
+          <div>
+            <strong>Agilidad</strong>
+            <span>Trámites eficientes sin sacrificar la calidad jurídica.</span>
+          </div>
+        </li>
+      </ul>
+
+      <a href="/contacto" class="btn btn-primary" style="margin-top:2rem;">
+        Agendar una consulta
+      </a>
+    </div>
+
+    <div class="nosotros-aside">
+      <div class="notario-card">
+        <div class="notario-avatar">
+          <span>N</span>
+        </div>
+        <h3>Lic. Notario Titular</h3>
+        <p class="notario-cargo">Notario Público No. 56</p>
+        <p class="notario-bio">
+          Licenciado en Derecho por la UNAM, con maestría en Derecho Notarial
+          y Registral. Miembro activo del Colegio de Notarios de la Ciudad de México.
+        </p>
+      </div>
+
+      <div class="horario-card">
+        <h4>Horario de atención</h4>
+        <ul>
+          <li><span>Lunes – Viernes</span><strong>9:00 – 18:00</strong></li>
+          <li><span>Sábado</span><strong>9:00 – 13:00</strong></li>
+          <li><span>Domingo</span><strong>Cerrado</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nosotros-section {
+    background: var(--color-white);
+  }
+
+  .nosotros-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .nosotros-text p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+    line-height: 1.85;
+  }
+
+  .valores-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .valores-list li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+
+  .valor-icon {
+    color: var(--color-gold);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    margin-top: 0.3rem;
+  }
+
+  .valores-list strong {
+    display: block;
+    color: var(--color-navy);
+    font-size: 0.95rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .valores-list span {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+
+  .notario-card {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 2rem;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .notario-avatar {
+    width: 80px;
+    height: 80px;
+    background: var(--color-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-navy-dark);
+    font-weight: 700;
+  }
+
+  .notario-card h3 {
+    color: var(--color-white);
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .notario-cargo {
+    color: var(--color-gold);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .notario-bio {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+
+  .horario-card {
+    background: var(--color-cream);
+    border: 1px solid var(--color-border);
+    padding: 1.5rem 2rem;
+    border-radius: 4px;
+  }
+
+  .horario-card h4 {
+    font-family: var(--font-serif);
+    color: var(--color-navy);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-gold);
+  }
+
+  .horario-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .horario-card li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .horario-card strong {
+    color: var(--color-navy);
+  }
+
+  @media (max-width: 860px) {
+    .nosotros-layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

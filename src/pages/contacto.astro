@@ -1,0 +1,382 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contacto" description="Contáctanos para agendar una cita o resolver tus dudas. Notaría Pública No. 56.">
+  <!-- Page Header -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-subtitle">Estamos para ayudarte</p>
+      <h1>Contacto</h1>
+      <p class="page-hero-desc">
+        Agenda una consulta sin costo, resuelve tus dudas o solicita información
+        sobre cualquiera de nuestros servicios.
+      </p>
+    </div>
+  </section>
+
+  <section class="section contacto-section">
+    <div class="container contacto-layout">
+
+      <!-- Formulario -->
+      <div class="form-wrapper">
+        <h2>Envíanos un mensaje</h2>
+        <p class="form-intro">
+          Completa el formulario y te contactaremos en un plazo máximo de 24 horas hábiles.
+        </p>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" required placeholder="Ej. Juan García López" />
+            </div>
+            <div class="form-group">
+              <label for="email">Correo electrónico *</label>
+              <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="55 0000 0000" />
+            </div>
+            <div class="form-group">
+              <label for="servicio">Servicio de interés</label>
+              <select id="servicio" name="servicio">
+                <option value="">Selecciona un servicio...</option>
+                <option>Escrituras y Protocolos</option>
+                <option>Poderes Notariales</option>
+                <option>Testamentos</option>
+                <option>Actas Notariales</option>
+                <option>Certificaciones</option>
+                <option>Asesoría Jurídica</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje *</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required
+              placeholder="Describe brevemente tu consulta o el trámite que necesitas realizar..."></textarea>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" id="aviso" name="aviso" required />
+            <label for="aviso">
+              He leído y acepto el tratamiento de mis datos personales conforme al aviso de privacidad.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit">
+            Enviar mensaje
+          </button>
+
+          <p class="form-note">* Campos obligatorios</p>
+        </form>
+      </div>
+
+      <!-- Info lateral -->
+      <aside class="contacto-info">
+        <div class="info-card">
+          <h3>Información de contacto</h3>
+
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <div>
+              <strong>Dirección</strong>
+              <p>Av. Juárez 100, Centro Histórico<br />Ciudad de México, CDMX, C.P. 06000</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">📞</span>
+            <div>
+              <strong>Teléfono</strong>
+              <p><a href="tel:+525500000000">55 0000 0000</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">✉</span>
+            <div>
+              <strong>Correo electrónico</strong>
+              <p><a href="mailto:contacto@notaria56.mx">contacto@notaria56.mx</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">🕐</span>
+            <div>
+              <strong>Horario de atención</strong>
+              <p>Lun – Vie: 9:00 – 18:00 hrs<br />Sáb: 9:00 – 13:00 hrs</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mapa placeholder -->
+        <div class="mapa-placeholder">
+          <div class="mapa-inner">
+            <span class="mapa-pin">📍</span>
+            <p>Av. Juárez 100, Centro Histórico</p>
+            <p class="mapa-sub">Ciudad de México</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    background: var(--color-navy);
+    padding: 4rem 0 3rem;
+    border-bottom: 3px solid var(--color-gold);
+  }
+
+  .page-hero h1 {
+    font-family: var(--font-serif);
+    color: var(--color-white);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .page-hero-desc {
+    color: rgba(255,255,255,0.7);
+    max-width: 520px;
+    line-height: 1.75;
+  }
+
+  .page-hero .section-subtitle {
+    margin-bottom: 0.5rem;
+  }
+
+  .contacto-section {
+    background: var(--color-cream);
+  }
+
+  .contacto-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .form-wrapper {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 2.5rem;
+    border-radius: 2px;
+  }
+
+  .form-wrapper h2 {
+    font-family: var(--font-serif);
+    color: var(--color-navy);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-intro {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-navy);
+    letter-spacing: 0.02em;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.9rem;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-cream);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--color-navy);
+    box-shadow: 0 0 0 3px rgba(26,46,90,0.08);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+  }
+
+  .form-check {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+  }
+
+  .form-check input {
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+    accent-color: var(--color-navy);
+  }
+
+  .form-check label {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .btn-submit {
+    align-self: flex-start;
+    min-width: 180px;
+  }
+
+  .form-note {
+    color: var(--color-text-muted);
+    font-size: 0.78rem;
+  }
+
+  .contacto-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 2rem;
+    border-radius: 2px;
+  }
+
+  .info-card h3 {
+    font-family: var(--font-serif);
+    color: var(--color-navy);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-gold);
+  }
+
+  .info-item {
+    display: flex;
+    gap: 0.9rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .info-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-icon {
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .info-item strong {
+    display: block;
+    color: var(--color-navy);
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.2rem;
+  }
+
+  .info-item p {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .info-item a {
+    color: var(--color-navy);
+    transition: color 0.2s;
+  }
+
+  .info-item a:hover {
+    color: var(--color-gold);
+  }
+
+  .mapa-placeholder {
+    background: var(--color-navy);
+    border-radius: 2px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+  }
+
+  .mapa-inner {
+    text-align: center;
+  }
+
+  .mapa-pin {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .mapa-inner p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+  }
+
+  .mapa-sub {
+    color: var(--color-gold) !important;
+    font-size: 0.8rem !important;
+  }
+
+  @media (max-width: 860px) {
+    .contacto-layout {
+      grid-template-columns: 1fr;
+    }
+    .contacto-info {
+      position: static;
+    }
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contactForm') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('.btn-submit') as HTMLButtonElement;
+    btn.textContent = '✓ Mensaje enviado';
+    btn.disabled = true;
+    btn.style.background = '#2e7d32';
+    btn.style.borderColor = '#2e7d32';
+  });
+</script>

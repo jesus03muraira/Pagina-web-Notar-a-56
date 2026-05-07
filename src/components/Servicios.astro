@@ -1,0 +1,146 @@
+---
+const servicios = [
+  {
+    icon: '🏠',
+    titulo: 'Escrituras y Protocolos',
+    desc: 'Compraventa de inmuebles, constitución de sociedades, donaciones y cualquier acto que requiera certeza jurídica.',
+  },
+  {
+    icon: '📜',
+    titulo: 'Poderes Notariales',
+    desc: 'Poderes generales, especiales y para pleitos y cobranzas. Redactados con precisión legal y firmados ante fedatario.',
+  },
+  {
+    icon: '🕊',
+    titulo: 'Testamentos',
+    desc: 'Planificación sucesoria con total confidencialidad. Testamento público abierto y asesoría patrimonial personalizada.',
+  },
+  {
+    icon: '✒',
+    titulo: 'Actas Notariales',
+    desc: 'Actas de hechos, asambleas, notificaciones, protocolización de documentos privados y declaraciones juradas.',
+  },
+  {
+    icon: '✅',
+    titulo: 'Certificaciones',
+    desc: 'Cotejo de documentos, certificación de firmas, copias certificadas y apostilla de documentos para el extranjero.',
+  },
+  {
+    icon: '⚖',
+    titulo: 'Asesoría Jurídica',
+    desc: 'Consulta legal previa a la firma de cualquier acto. Orientación en derecho civil, mercantil, familiar y notarial.',
+  },
+];
+---
+
+<section class="section servicios-section" id="servicios">
+  <div class="container">
+    <div class="servicios-header">
+      <p class="section-subtitle">Lo que hacemos</p>
+      <h2 class="section-title">Servicios Notariales</h2>
+      <div class="section-divider"></div>
+      <p class="servicios-intro">
+        Ofrecemos una amplia gama de servicios notariales para personas físicas y
+        morales, con la garantía de la fe pública y el respaldo de más de dos décadas
+        de experiencia.
+      </p>
+    </div>
+
+    <div class="servicios-grid">
+      {servicios.map(s => (
+        <div class="servicio-card">
+          <span class="servicio-icon">{s.icon}</span>
+          <h3 class="servicio-titulo">{s.titulo}</h3>
+          <p class="servicio-desc">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="servicios-cta">
+      <p>¿No encuentras el servicio que necesitas?</p>
+      <a href="/contacto" class="btn btn-primary">Contáctanos</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .servicios-section {
+    background: var(--color-cream);
+  }
+
+  .servicios-header {
+    max-width: 580px;
+    margin-bottom: 3rem;
+  }
+
+  .servicios-intro {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .servicio-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-gold);
+    padding: 2rem 1.5rem;
+    border-radius: 2px;
+    transition: box-shadow 0.25s, transform 0.25s;
+  }
+
+  .servicio-card:hover {
+    box-shadow: 0 8px 24px rgba(26,46,90,0.1);
+    transform: translateY(-3px);
+  }
+
+  .servicio-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .servicio-titulo {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--color-navy);
+    margin-bottom: 0.6rem;
+  }
+
+  .servicio-desc {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .servicios-cta {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .servicios-cta p {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .servicios-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .servicios-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

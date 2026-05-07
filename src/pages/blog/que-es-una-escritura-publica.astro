@@ -1,0 +1,284 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const post = {
+  titulo: '¿Qué es una escritura pública y para qué sirve?',
+  fecha: '2 de mayo, 2025',
+  categoria: 'Derecho Inmobiliario',
+  autor: 'Notaría Pública No. 56',
+};
+---
+
+<Layout title={post.titulo} description="La escritura pública es el documento más importante en cualquier transacción inmobiliaria. Descubre qué es y cuáles son sus efectos legales.">
+  <section class="page-hero">
+    <div class="container">
+      <a href="/blog" class="back-link">← Volver al Blog</a>
+      <p class="post-categoria">{post.categoria}</p>
+      <h1>{post.titulo}</h1>
+      <div class="post-byline">
+        <span>{post.autor}</span>
+        <span>·</span>
+        <span>{post.fecha}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section article-section">
+    <div class="container article-layout">
+      <article class="article-body">
+        <p class="lead">
+          La escritura pública es uno de los instrumentos jurídicos más importantes del derecho
+          notarial mexicano. Sin embargo, muchas personas desconocen exactamente qué es, cuándo
+          se requiere y qué efectos legales produce. En este artículo lo explicamos de forma sencilla.
+        </p>
+
+        <h2>¿Qué es una escritura pública?</h2>
+        <p>
+          Una escritura pública es un documento elaborado y autorizado por un notario público,
+          en el que se hace constar un acto jurídico — como la compraventa de una casa, la
+          constitución de una sociedad o un poder notarial. El notario da fe de que el acto se
+          realizó, que las partes lo firmaron y que el contenido es verídico.
+        </p>
+        <p>
+          A diferencia de un contrato privado, la escritura pública tiene <strong>plena fe probatoria</strong>:
+          se presume verdadera hasta que se demuestre lo contrario. Esto le da una seguridad jurídica
+          muy superior a cualquier documento firmado sin intervención del notario.
+        </p>
+
+        <h2>¿Cuándo se necesita una escritura pública?</h2>
+        <p>La ley exige escritura pública en muchos actos. Los más comunes son:</p>
+        <ul>
+          <li>Compraventa de bienes inmuebles (casas, terrenos, locales)</li>
+          <li>Constitución, modificación o disolución de sociedades</li>
+          <li>Donaciones de bienes raíces</li>
+          <li>Hipotecas y fideicomisos</li>
+          <li>Poderes notariales generales</li>
+          <li>Protocolización de estatutos sociales</li>
+        </ul>
+
+        <h2>¿Qué elementos contiene?</h2>
+        <p>Toda escritura pública incluye, entre otros elementos:</p>
+        <ul>
+          <li><strong>Número de protocolo:</strong> identificador único en el registro del notario.</li>
+          <li><strong>Fecha y lugar:</strong> dónde y cuándo se firmó.</li>
+          <li><strong>Datos de los comparecientes:</strong> nombre, identificación oficial, estado civil.</li>
+          <li><strong>Cuerpo del instrumento:</strong> descripción detallada del acto jurídico.</li>
+          <li><strong>Firma del notario y sello oficial:</strong> que otorga fe pública.</li>
+        </ul>
+
+        <h2>¿Qué pasa después de firmar?</h2>
+        <p>
+          Una vez firmada la escritura, el notario la registra en el Registro Público de la
+          Propiedad (en el caso de inmuebles) o en el Registro Público de Comercio (para
+          sociedades). Este registro hace el acto oponible a terceros, lo que significa que
+          nadie puede ignorarlo.
+        </p>
+
+        <div class="article-cta">
+          <h3>¿Necesitas una escritura pública?</h3>
+          <p>
+            En la Notaría Pública No. 56 te asesoramos en cada etapa del proceso.
+            Agenda una consulta sin costo.
+          </p>
+          <a href="/contacto" class="btn btn-primary">Agendar consulta</a>
+        </div>
+      </article>
+
+      <aside class="article-sidebar">
+        <div class="sidebar-widget">
+          <h3>Artículos relacionados</h3>
+          <ul>
+            <li><a href="/blog/como-hacer-un-testamento">Cómo hacer un testamento: guía paso a paso</a></li>
+            <li><a href="/blog/poder-notarial-tipos">Tipos de poder notarial: ¿cuál necesito?</a></li>
+            <li><a href="/blog/apostilla-documentos-extranjero">Apostilla de documentos: todo lo que debes saber</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-widget sidebar-cta">
+          <h3>¿Tienes dudas?</h3>
+          <p>Contáctanos y un especialista te orientará.</p>
+          <a href="/contacto" class="btn btn-primary" style="width:100%; text-align:center;">Contactar</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    background: var(--color-navy);
+    padding: 3.5rem 0 3rem;
+    border-bottom: 3px solid var(--color-gold);
+  }
+
+  .back-link {
+    color: var(--color-gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    transition: opacity 0.2s;
+  }
+
+  .back-link:hover { opacity: 0.75; }
+
+  .post-categoria {
+    background: var(--color-gold-pale);
+    color: var(--color-navy);
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .page-hero h1 {
+    font-family: var(--font-serif);
+    color: var(--color-white);
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    max-width: 680px;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .post-byline {
+    display: flex;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.85rem;
+  }
+
+  .article-section {
+    background: var(--color-cream);
+  }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .article-body {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 2.5rem;
+    border-radius: 2px;
+  }
+
+  .article-body .lead {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    line-height: 1.85;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--color-gold);
+    padding-left: 1.25rem;
+  }
+
+  .article-body h2 {
+    font-family: var(--font-serif);
+    color: var(--color-navy);
+    font-size: 1.3rem;
+    margin: 2rem 0 0.75rem;
+  }
+
+  .article-body p {
+    color: var(--color-text-muted);
+    line-height: 1.85;
+    margin-bottom: 1rem;
+  }
+
+  .article-body ul {
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.85;
+  }
+
+  .article-body ul li {
+    margin-bottom: 0.4rem;
+  }
+
+  .article-cta {
+    background: var(--color-navy);
+    padding: 2rem;
+    border-radius: 4px;
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+
+  .article-cta h3 {
+    color: var(--color-gold);
+    font-family: var(--font-serif);
+    margin-bottom: 0.5rem;
+  }
+
+  .article-cta p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .sidebar-widget {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 1.5rem;
+    border-radius: 2px;
+  }
+
+  .sidebar-widget h3 {
+    font-family: var(--font-serif);
+    color: var(--color-navy);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-gold);
+  }
+
+  .sidebar-widget ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .sidebar-widget a {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    transition: color 0.2s;
+  }
+
+  .sidebar-widget a:hover { color: var(--color-gold); }
+
+  .sidebar-cta {
+    background: var(--color-navy);
+  }
+
+  .sidebar-cta h3 {
+    color: var(--color-gold);
+    border-bottom-color: rgba(201,162,39,0.4);
+  }
+
+  .sidebar-cta p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+  }
+
+  @media (max-width: 860px) {
+    .article-layout {
+      grid-template-columns: 1fr;
+    }
+    .article-sidebar { position: static; }
+  }
+</style>

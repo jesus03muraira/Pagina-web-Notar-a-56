@@ -1,0 +1,148 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="hero-eyebrow">Fe Pública y Confianza</p>
+    <h1 class="hero-title">Notaría Pública<br /><span class="hero-title-accent">No. 56</span></h1>
+    <p class="hero-desc">
+      Más de dos décadas brindando seguridad jurídica a personas y empresas.
+      Atención personalizada, trámites ágiles y asesoría legal de primer nivel.
+    </p>
+    <div class="hero-actions">
+      <a href="/contacto" class="btn btn-primary">Agendar cita</a>
+      <a href="/#servicios" class="btn btn-outline">Ver servicios</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">+25</span>
+        <span class="stat-label">Años de experiencia</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">+10,000</span>
+        <span class="stat-label">Escrituras firmadas</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Respaldo legal</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 90vh;
+    background:
+      linear-gradient(135deg, rgba(17, 29, 61, 0.92) 0%, rgba(26, 46, 90, 0.88) 60%, rgba(17, 29, 61, 0.95) 100%),
+      url('/images/hero-bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 40px,
+      rgba(201, 162, 39, 0.03) 40px,
+      rgba(201, 162, 39, 0.03) 41px
+    );
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    max-width: 700px;
+  }
+
+  .hero-eyebrow {
+    color: var(--color-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--color-white);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title-accent {
+    color: var(--color-gold);
+  }
+
+  .hero-desc {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    max-width: 540px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-num {
+    color: var(--color-gold);
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .stat-label {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 2.5rem;
+    background: rgba(201,162,39,0.35);
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      min-height: 75vh;
+    }
+    .stat-divider {
+      display: none;
+    }
+    .hero-stats {
+      gap: 1.5rem 2rem;
+    }
+  }
+</style>

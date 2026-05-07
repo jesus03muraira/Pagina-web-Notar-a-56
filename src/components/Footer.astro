@@ -1,0 +1,173 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <span class="footer-logo-icon">⚖</span>
+        <div>
+          <span class="footer-logo-main">Notaría Pública</span>
+          <span class="footer-logo-sub">No. 56</span>
+        </div>
+      </div>
+      <p class="footer-tagline">
+        Fe pública, confianza y profesionalismo al servicio de la comunidad.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="/#servicios">Escrituras y Protocolos</a></li>
+        <li><a href="/#servicios">Poderes Notariales</a></li>
+        <li><a href="/#servicios">Testamentos</a></li>
+        <li><a href="/#servicios">Actas Notariales</a></li>
+        <li><a href="/#servicios">Certificaciones</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/#nosotros">Nosotros</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul class="footer-contact">
+        <li>
+          <span class="icon">📍</span>
+          <span>Av. Juárez 100, Centro,<br />Ciudad de México</span>
+        </li>
+        <li>
+          <span class="icon">📞</span>
+          <a href="tel:+525500000000">55 0000 0000</a>
+        </li>
+        <li>
+          <span class="icon">✉</span>
+          <a href="mailto:contacto@notaria56.mx">contacto@notaria56.mx</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>© {year} Notaría Pública No. 56. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-navy-dark);
+    color: rgba(255,255,255,0.75);
+    padding-top: 3.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .footer-logo-icon {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+  }
+
+  .footer-logo-main {
+    display: block;
+    color: var(--color-white);
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .footer-logo-sub {
+    display: block;
+    color: var(--color-gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  .footer-tagline {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    max-width: 240px;
+  }
+
+  .footer-col h4 {
+    color: var(--color-gold);
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(201,162,39,0.3);
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-col a {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover {
+    color: var(--color-gold);
+  }
+
+  .footer-contact li {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+    align-items: flex-start;
+  }
+
+  .footer-contact .icon {
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1.25rem 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
