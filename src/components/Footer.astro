@@ -1,5 +1,6 @@
 ---
 const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <footer class="footer">
@@ -12,6 +13,7 @@ const year = new Date().getFullYear();
           <span class="footer-logo-sub">No. 56</span>
         </div>
       </div>
+      <p class="footer-notario">Lic. Sergio de Jesús Gil Valdez</p>
       <p class="footer-tagline">
         Fe pública, confianza y profesionalismo al servicio de la comunidad.
       </p>
@@ -20,21 +22,21 @@ const year = new Date().getFullYear();
     <div class="footer-col">
       <h4>Servicios</h4>
       <ul>
-        <li><a href="/#servicios">Escrituras y Protocolos</a></li>
-        <li><a href="/#servicios">Poderes Notariales</a></li>
-        <li><a href="/#servicios">Testamentos</a></li>
-        <li><a href="/#servicios">Actas Notariales</a></li>
-        <li><a href="/#servicios">Certificaciones</a></li>
+        <li><a href={`${base}/#servicios`}>Escrituras y Protocolos</a></li>
+        <li><a href={`${base}/#servicios`}>Poderes Notariales</a></li>
+        <li><a href={`${base}/#servicios`}>Testamentos</a></li>
+        <li><a href={`${base}/#servicios`}>Actas Notariales</a></li>
+        <li><a href={`${base}/#servicios`}>Certificaciones</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h4>Navegación</h4>
       <ul>
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/#nosotros">Nosotros</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/contacto">Contacto</a></li>
+        <li><a href={`${base}/`}>Inicio</a></li>
+        <li><a href={`${base}/#nosotros`}>Nosotros</a></li>
+        <li><a href={`${base}/blog`}>Blog</a></li>
+        <li><a href={`${base}/contacto`}>Contacto</a></li>
       </ul>
     </div>
 
@@ -59,7 +61,7 @@ const year = new Date().getFullYear();
 
   <div class="footer-bottom">
     <div class="container">
-      <p>© {year} Notaría Pública No. 56. Todos los derechos reservados.</p>
+      <p>© {year} Notaría Pública No. 56 — Lic. Sergio de Jesús Gil Valdez. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>
@@ -82,7 +84,7 @@ const year = new Date().getFullYear();
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
   }
 
   .footer-logo-icon {
@@ -106,20 +108,30 @@ const year = new Date().getFullYear();
     font-weight: 600;
   }
 
+  .footer-notario {
+    color: var(--color-gold);
+    font-family: var(--font-serif);
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
   .footer-tagline {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     line-height: 1.6;
     max-width: 240px;
+    color: rgba(255,255,255,0.5);
   }
 
   .footer-col h4 {
     color: var(--color-gold);
     font-family: var(--font-serif);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     letter-spacing: 0.05em;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(201,162,39,0.3);
+    border-bottom: 1px solid rgba(158,124,63,0.3);
   }
 
   .footer-col ul {
@@ -130,7 +142,7 @@ const year = new Date().getFullYear();
   }
 
   .footer-col a {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.6);
     font-size: 0.875rem;
     transition: color 0.2s;
   }
@@ -144,6 +156,7 @@ const year = new Date().getFullYear();
     gap: 0.6rem;
     font-size: 0.875rem;
     align-items: flex-start;
+    color: rgba(255,255,255,0.6);
   }
 
   .footer-contact .icon {
@@ -152,22 +165,18 @@ const year = new Date().getFullYear();
   }
 
   .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid rgba(255,255,255,0.07);
     padding: 1.25rem 0;
     text-align: center;
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.4);
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
   }
 
   @media (max-width: 900px) {
-    .footer-grid {
-      grid-template-columns: 1fr 1fr;
-    }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
   }
 
   @media (max-width: 560px) {
-    .footer-grid {
-      grid-template-columns: 1fr;
-    }
+    .footer-grid { grid-template-columns: 1fr; }
   }
 </style>

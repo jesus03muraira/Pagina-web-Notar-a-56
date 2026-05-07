@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <section class="section nosotros-section" id="nosotros">
@@ -10,8 +11,8 @@
       <p>
         La Notaría Pública No. 56 fue fundada con la misión de acercar la fe pública
         a los ciudadanos con un trato cercano, precios justos y procesos transparentes.
-        Nuestro titular, el Lic. Notario, cuenta con más de 25 años de trayectoria en
-        el ejercicio del derecho notarial.
+        Nuestro titular, el <strong>Lic. Sergio de Jesús Gil Valdez</strong>, cuenta con más de 25 años
+        de trayectoria en el ejercicio del derecho notarial.
       </p>
       <p>
         Creemos que cada escritura, cada testamento y cada poder notarial representa
@@ -43,7 +44,7 @@
         </li>
       </ul>
 
-      <a href="/contacto" class="btn btn-primary" style="margin-top:2rem;">
+      <a href={`${base}/contacto`} class="btn btn-primary" style="margin-top:2rem;">
         Agendar una consulta
       </a>
     </div>
@@ -51,9 +52,9 @@
     <div class="nosotros-aside">
       <div class="notario-card">
         <div class="notario-avatar">
-          <span>N</span>
+          <span>SG</span>
         </div>
-        <h3>Lic. Notario Titular</h3>
+        <h3>Lic. Sergio de Jesús Gil Valdez</h3>
         <p class="notario-cargo">Notario Público No. 56</p>
         <p class="notario-bio">
           Licenciado en Derecho por la UNAM, con maestría en Derecho Notarial
