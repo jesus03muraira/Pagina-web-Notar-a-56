@@ -4,7 +4,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Contacto" description="Contáctanos para agendar una cita o resolver tus dudas. Notaría Pública No. 56.">
-  <!-- Page Header -->
+  <!-- Hero photo a lo largo -->
+  <div class="contacto-hero-img">
+    <img src={`${base}/images/contacto.jpg`} alt="Contacto Notaría 56" />
+  </div>
+
+  <!-- Page Header (recuadro azul) -->
   <section class="page-hero">
     <div class="container">
       <p class="section-subtitle">Estamos para ayudarte</p>
@@ -149,9 +154,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </Layout>
 
 <style>
+  .contacto-hero-img {
+    width: 100%;
+    margin-top: 5rem;
+    line-height: 0;
+  }
+
+  .contacto-hero-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
   .page-hero {
     background: var(--color-navy);
-    padding: 8rem 0 3rem;
+    padding: 5rem 0 5rem;
     border-bottom: 3px solid var(--color-gold);
   }
 
