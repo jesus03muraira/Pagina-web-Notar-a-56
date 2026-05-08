@@ -89,6 +89,7 @@ const servicios = [
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    image-rendering: -webkit-optimize-contrast;
     font-family: var(--font-display);
     font-weight: 300;
     padding: 7rem 0;
@@ -115,18 +116,21 @@ const servicios = [
   .servicio-card {
     display: flex;
     flex-direction: column;
-    background: var(--color-white);
-    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.55);
     border-top: 3px solid var(--color-gold);
     padding: 2.25rem 1.75rem 2rem;
     border-radius: 2px;
     text-decoration: none;
     color: inherit;
-    transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+    transition: background 0.25s, box-shadow 0.25s, transform 0.25s, border-color 0.25s;
   }
 
   .servicio-card:hover {
-    box-shadow: 0 12px 28px rgba(13,27,46,0.12);
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 14px 32px rgba(13,27,46,0.22);
     transform: translateY(-4px);
   }
 
