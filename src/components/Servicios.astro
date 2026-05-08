@@ -96,6 +96,15 @@ const servicios = [
     padding: 7rem 0;
   }
 
+  .servicios-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 20, 40, 0.28);
+    z-index: 0;
+    pointer-events: none;
+  }
+
   .servicios-section .container {
     position: relative;
     z-index: 1;
