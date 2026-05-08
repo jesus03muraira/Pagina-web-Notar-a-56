@@ -50,11 +50,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </li>
         <li>
           <span class="icon">📞</span>
-          <a href="tel:+525500000000">55 0000 0000</a>
+          <span class="footer-tels">
+            <a href="tel:+528129679827">81 2967 9827</a>
+            <span class="tel-sep">/</span>
+            <a href="tel:+528132250592">81 3225 0592</a>
+          </span>
         </li>
         <li>
           <span class="icon">✉</span>
-          <a href="mailto:contacto@notaria56.mx">contacto@notaria56.mx</a>
+          <a href="mailto:notario@np56.mx">notario@np56.mx</a>
         </li>
       </ul>
     </div>
@@ -147,6 +151,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   .footer-contact .icon {
     flex-shrink: 0;
     margin-top: 0.1rem;
+  }
+
+  .footer-tels {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+  }
+
+  .footer-tels .tel-sep {
+    color: rgba(255,255,255,0.3);
   }
 
   .footer-bottom {
