@@ -1,10 +1,12 @@
 ---
 import RamoPage from '../../components/RamoPage.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <RamoPage
   titulo="Poderes"
   intro="Otorgamiento, modificación y revocación de poderes notariales para personas físicas y morales, con la amplitud de facultades que cada caso requiere."
+  imagen={`${base}/images/poder.jpg`}
   servicios={[
     'Poder general para pleitos y cobranzas',
     'Poder general para actos de administración',
