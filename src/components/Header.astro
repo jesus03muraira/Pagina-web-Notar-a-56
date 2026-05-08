@@ -76,12 +76,12 @@ const currentPath = Astro.url.pathname;
     z-index: 100;
     background: var(--color-navy);
     box-shadow: 0 2px 16px rgba(0,0,0,0.30);
-    transform: translateY(-100%);
+    transform: translateY(0);
     transition: transform 0.35s ease;
   }
 
-  .header.visible {
-    transform: translateY(0);
+  .header.hidden {
+    transform: translateY(-100%);
   }
 
   .header-inner {
@@ -306,45 +306,38 @@ const currentPath = Astro.url.pathname;
     });
   });
 
-  // Hover-reveal navbar (desktop only)
+  // Auto-hide on scroll down, reveal on scroll up / hover top (desktop only)
   if (header) {
-    const SHOW_BAND = 70;
-    const HIDE_DELAY = 220;
-    let hideTimer: number | undefined;
+    const HOVER_BAND = 70;
+    const SCROLL_DELTA = 6;
+    const TOP_ZONE = 60;
 
     const isDesktop = () => window.innerWidth > 820;
+    let lastY = window.scrollY;
 
-    const show = () => {
+    const show = () => header.classList.remove('hidden');
+    const hide = () => header.classList.add('hidden');
+
+    window.addEventListener('scroll', () => {
       if (!isDesktop()) return;
-      if (hideTimer) {
-        clearTimeout(hideTimer);
-        hideTimer = undefined;
+      const y = window.scrollY;
+      const delta = y - lastY;
+
+      if (y < TOP_ZONE) {
+        show();
+      } else if (delta > SCROLL_DELTA) {
+        hide();
+      } else if (delta < -SCROLL_DELTA) {
+        show();
       }
-      header.classList.add('visible');
-    };
-
-    const scheduleHide = () => {
-      if (!isDesktop()) return;
-      if (hideTimer) clearTimeout(hideTimer);
-      hideTimer = window.setTimeout(() => {
-        header.classList.remove('visible');
-      }, HIDE_DELAY);
-    };
+      lastY = y;
+    }, { passive: true });
 
     document.addEventListener('mousemove', (e) => {
       if (!isDesktop()) return;
-      if (e.clientY <= SHOW_BAND) show();
+      if (e.clientY <= HOVER_BAND) show();
     });
 
     header.addEventListener('mouseenter', show);
-    header.addEventListener('mouseleave', scheduleHide);
-
-    // Brief peek on first load so the user discovers it exists
-    if (isDesktop()) {
-      header.classList.add('visible');
-      window.setTimeout(() => {
-        if (!header.matches(':hover')) header.classList.remove('visible');
-      }, 1800);
-    }
   }
 </script>
