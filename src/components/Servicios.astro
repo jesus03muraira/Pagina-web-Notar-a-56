@@ -1,5 +1,6 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const bg = `${base}/images/fotoedificio.png`;
 
 const servicios = [
   {
@@ -41,7 +42,7 @@ const servicios = [
 ];
 ---
 
-<section class="section servicios-section" id="servicios">
+<section class="section servicios-section" id="servicios" style={`background-image: url('${bg}')`}>
   <div class="container">
     <div class="servicios-header">
       <p class="section-subtitle">Lo que hacemos</p>
@@ -85,9 +86,32 @@ const servicios = [
 
 <style>
   .servicios-section {
-    background: var(--color-cream);
+    position: relative;
+    background-color: var(--color-navy);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: var(--font-display);
     font-weight: 300;
+    padding: 7rem 0;
+  }
+
+  .servicios-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 20, 40, 0.78);
+    z-index: 0;
+  }
+
+  .servicios-section .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .servicios-section :global(.section-title) {
+    color: var(--color-white);
   }
 
   .servicios-header {
@@ -96,7 +120,7 @@ const servicios = [
   }
 
   .servicios-intro {
-    color: var(--color-text-muted);
+    color: rgba(255,255,255,0.80);
     font-size: 1rem;
     line-height: 1.8;
   }
@@ -190,7 +214,7 @@ const servicios = [
   }
 
   .servicios-cta p {
-    color: var(--color-text-muted);
+    color: rgba(255,255,255,0.80);
     font-size: 1rem;
   }
 
