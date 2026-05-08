@@ -21,12 +21,14 @@ const currentPath = Astro.url.pathname;
 
 <header class="header">
   <div class="container header-inner">
-    <a href={`${base}/`} class="logo">
-      <span class="logo-icon">⚖</span>
-      <div class="logo-text">
-        <span class="logo-main">Notaría Pública</span>
-        <span class="logo-sub">No. 56</span>
-      </div>
+    <a href={`${base}/`} class="logo" aria-label="Notaría 56 - Inicio">
+      <img
+        src={`${base}/images/Notaria-56-logo.png`}
+        alt="Notaría 56"
+        class="logo-img"
+        width="220"
+        height="80"
+      />
     </a>
 
     <nav class="nav" id="nav">
@@ -74,8 +76,7 @@ const currentPath = Astro.url.pathname;
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--color-navy-dark);
-    border-bottom: 2px solid var(--color-gold);
+    background: var(--color-navy);
     box-shadow: 0 2px 16px rgba(0,0,0,0.30);
   }
 
@@ -83,43 +84,21 @@ const currentPath = Astro.url.pathname;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 4.5rem;
+    height: 5rem;
     gap: 1rem;
   }
 
   .logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
     text-decoration: none;
     flex-shrink: 0;
   }
 
-  .logo-icon {
-    font-size: 1.6rem;
-    color: var(--color-gold);
-    line-height: 1;
-  }
-
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.2;
-  }
-
-  .logo-main {
-    color: var(--color-white);
-    font-family: var(--font-serif);
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-  }
-
-  .logo-sub {
-    color: var(--color-gold);
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    font-weight: 500;
+  .logo-img {
+    height: 3.4rem;
+    width: auto;
+    display: block;
   }
 
   /* Nav */
@@ -171,7 +150,7 @@ const currentPath = Astro.url.pathname;
     position: absolute;
     top: calc(100% + 0.5rem);
     left: 0;
-    background: var(--color-navy-dark);
+    background: var(--color-navy);
     border: 1px solid rgba(158,124,63,0.25);
     border-top: 2px solid var(--color-gold);
     list-style: none;
@@ -237,13 +216,12 @@ const currentPath = Astro.url.pathname;
     .nav {
       display: none;
       position: absolute;
-      top: 4.5rem;
+      top: 5rem;
       left: 0;
       right: 0;
-      background: var(--color-navy-dark);
+      background: var(--color-navy);
       flex-direction: column;
       padding: 0.5rem 0 1rem;
-      border-bottom: 2px solid var(--color-gold);
       gap: 0;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
