@@ -15,9 +15,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
     </div>
 
-    <!-- Slot 2: legado2.jpg sin título -->
+    <!-- Slot 2: legado2.jpg sin título y sin overlay -->
     <div class="slide slide-legado" style={`background-image: url('${base}/images/legado2.jpg')`}>
-      <div class="slide-overlay"></div>
     </div>
 
     <!-- Slot 3: clon de Slot 1 (para que el loop sea siempre a la izquierda) -->
@@ -35,21 +34,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 <style>
   .hero {
     position: relative;
-    min-height: 120vh;
+    /* 70vw ≈ ratio de legado2.jpg (1.43:1) en pantallas anchas, 115vh mínimo en pantallas altas */
+    min-height: max(115vh, 70vw);
     overflow: hidden;
   }
 
   .slides-track {
     display: flex;
     width: 300%;
-    min-height: 120vh;
+    min-height: max(115vh, 70vw);
     /* transición manejada por JS; sin transition aquí al inicio */
   }
 
   .slide {
     position: relative;
     width: 33.3333%;
-    min-height: 120vh;
+    min-height: max(115vh, 70vw);
     flex-shrink: 0;
     background-size: cover;
     background-position: center;
@@ -61,7 +61,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 
   .slide-legado {
-    background-position: center top;
+    background-position: center center;
   }
 
   .slide-overlay {
@@ -103,7 +103,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 
   @media (max-width: 600px) {
-    .hero, .slide { min-height: 110vh; }
+    .hero, .slides-track, .slide { min-height: max(105vh, 110vw); }
     .hero-line { max-width: 2rem; }
     .hero-title {
       font-size: clamp(0.75rem, 3.2vw, 1rem);
