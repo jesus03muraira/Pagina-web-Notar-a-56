@@ -1,10 +1,12 @@
 ---
 import RamoPage from '../../components/RamoPage.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <RamoPage
   titulo="Familiares"
   intro="Actos notariales en materia familiar para formalizar acuerdos, regímenes patrimoniales y vínculos jurídicos personales."
+  imagen={`${base}/images/matrim.jpg`}
   servicios={[
     'Capitulaciones matrimoniales',
     'Convenio de divorcio',
