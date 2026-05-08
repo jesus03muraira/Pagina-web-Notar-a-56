@@ -1,10 +1,12 @@
 ---
 import RamoPage from '../../components/RamoPage.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <RamoPage
   titulo="Patrimoniales y Sucesorios"
   intro="Planeación y resguardo del patrimonio personal y familiar, con asesoría confidencial y trámites sucesorios completos."
+  imagen={`${base}/images/sucesorio.jpg`}
   servicios={[
     'Testamentos',
     'Adjudicación por herencia',
