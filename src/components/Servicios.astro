@@ -33,7 +33,7 @@ const servicios = [
 ];
 ---
 
-<section class="section servicios-section" id="servicios">
+<section class="section servicios-section photo-bg" id="servicios">
   <div class="container">
     <div class="servicios-header">
       <p class="section-subtitle">Lo que hacemos</p>
@@ -65,7 +65,25 @@ const servicios = [
 
 <style>
   .servicios-section {
-    background: var(--color-cream);
+    position: relative;
+    background: transparent;
+  }
+
+  .servicios-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 20, 40, 0.82);
+    z-index: 0;
+  }
+
+  .servicios-section .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .servicios-section :global(.section-title) {
+    color: var(--color-white);
   }
 
   .servicios-header {
@@ -74,7 +92,7 @@ const servicios = [
   }
 
   .servicios-intro {
-    color: var(--color-text-muted);
+    color: rgba(255,255,255,0.80);
     font-size: 1rem;
     line-height: 1.8;
   }
@@ -87,16 +105,17 @@ const servicios = [
   }
 
   .servicio-card {
-    background: var(--color-white);
-    border: 1px solid var(--color-border);
+    background: rgba(8, 20, 40, 0.55);
+    border: 1px solid rgba(255,255,255,0.12);
     border-top: 3px solid var(--color-gold);
     padding: 2rem 1.5rem;
     border-radius: 2px;
-    transition: box-shadow 0.25s, transform 0.25s;
+    transition: box-shadow 0.25s, transform 0.25s, background 0.25s;
   }
 
   .servicio-card:hover {
-    box-shadow: 0 8px 24px rgba(26,46,90,0.1);
+    background: rgba(8, 20, 40, 0.75);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
     transform: translateY(-3px);
   }
 
@@ -109,12 +128,12 @@ const servicios = [
   .servicio-titulo {
     font-family: var(--font-serif);
     font-size: 1.1rem;
-    color: var(--color-navy);
+    color: var(--color-white);
     margin-bottom: 0.6rem;
   }
 
   .servicio-desc {
-    color: var(--color-text-muted);
+    color: rgba(255,255,255,0.72);
     font-size: 0.9rem;
     line-height: 1.7;
   }
@@ -128,7 +147,7 @@ const servicios = [
   }
 
   .servicios-cta p {
-    color: var(--color-text-muted);
+    color: rgba(255,255,255,0.78);
     font-size: 1rem;
   }
 

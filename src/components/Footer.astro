@@ -3,7 +3,7 @@ const year = new Date().getFullYear();
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<footer class="footer">
+<footer class="footer photo-bg">
   <div class="container footer-grid">
     <div class="footer-brand">
       <div class="footer-logo">
@@ -68,9 +68,24 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <style>
   .footer {
-    background: var(--color-navy-dark);
+    position: relative;
+    background: transparent;
     color: rgba(255,255,255,0.75);
     padding-top: 3.5rem;
+  }
+
+  .footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(6, 14, 26, 0.88);
+    z-index: 0;
+  }
+
+  .footer > .container,
+  .footer-bottom {
+    position: relative;
+    z-index: 1;
   }
 
   .footer-grid {

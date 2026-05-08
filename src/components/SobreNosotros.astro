@@ -1,9 +1,8 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const bg = `${base}/images/fondonotaria.jpg`;
 ---
 
-<section class="section nosotros-section" id="nosotros" style={`background-image: url('${bg}')`}>
+<section class="section nosotros-section photo-bg" id="nosotros">
   <div class="container">
 
     <!-- Intro principal -->
@@ -111,10 +110,6 @@ const bg = `${base}/images/fondonotaria.jpg`;
 <style>
   .nosotros-section {
     position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     padding: 9rem 0;
   }
 
