@@ -1,13 +1,23 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const heroBg = `${base}/images/Foto.fachada.jpg`;
 ---
 
-<section class="hero" style={`background-image: url('${heroBg}')`}>
-  <div class="hero-title-wrap">
-    <span class="hero-line"></span>
-    <h1 class="hero-title">Notaría Pública 56</h1>
-    <span class="hero-line"></span>
+<section class="hero">
+  <div class="slides-track">
+    <!-- Slide 1: Foto.fachada.jpg con título -->
+    <div class="slide slide-1" style={`background-image: url('${base}/images/Foto.fachada.jpg')`}>
+      <div class="slide-overlay"></div>
+      <div class="hero-title-wrap">
+        <span class="hero-line"></span>
+        <h1 class="hero-title">Notaría Pública 56</h1>
+        <span class="hero-line"></span>
+      </div>
+    </div>
+
+    <!-- Slide 2: legado.jpg sin título -->
+    <div class="slide slide-2" style={`background-image: url('${base}/images/legado.jpg')`}>
+      <div class="slide-overlay"></div>
+    </div>
   </div>
 </section>
 
@@ -15,6 +25,26 @@ const heroBg = `${base}/images/Foto.fachada.jpg`;
   .hero {
     position: relative;
     min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .slides-track {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    min-height: 100vh;
+    transition: transform 1s cubic-bezier(0.77, 0, 0.18, 1);
+  }
+
+  .slides-track.slide-to-2 {
+    transform: translateX(-50%);
+  }
+
+  .slide {
+    position: relative;
+    width: 50%;
+    min-height: 100vh;
+    flex-shrink: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -24,8 +54,13 @@ const heroBg = `${base}/images/Foto.fachada.jpg`;
     padding: 2rem 1.5rem;
   }
 
-  .hero::before {
-    content: '';
+  .slide-1 {
+  }
+
+  .slide-2 {
+  }
+
+  .slide-overlay {
     position: absolute;
     inset: 0;
     background: rgba(8, 20, 40, 0.52);
@@ -64,15 +99,29 @@ const heroBg = `${base}/images/Foto.fachada.jpg`;
   }
 
   @media (max-width: 600px) {
-    .hero {
-      min-height: 90vh;
-    }
-    .hero-line {
-      max-width: 2rem;
-    }
+    .hero, .slide { min-height: 90vh; }
+    .hero-line { max-width: 2rem; }
     .hero-title {
       font-size: clamp(0.75rem, 3.2vw, 1rem);
       letter-spacing: 0.25em;
     }
   }
 </style>
+
+<script>
+  const track = document.querySelector('.slides-track') as HTMLElement;
+  let current = 0;
+  const total = 2;
+  const INTERVAL = 5000;
+
+  function next() {
+    current = (current + 1) % total;
+    if (current === 1) {
+      track.classList.add('slide-to-2');
+    } else {
+      track.classList.remove('slide-to-2');
+    }
+  }
+
+  setInterval(next, INTERVAL);
+</script>
