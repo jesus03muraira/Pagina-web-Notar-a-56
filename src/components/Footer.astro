@@ -7,11 +7,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <div class="container footer-grid">
     <div class="footer-brand">
       <div class="footer-logo">
-        <span class="footer-logo-icon">⚖</span>
-        <div>
-          <span class="footer-logo-main">Notaría Pública</span>
-          <span class="footer-logo-sub">No. 56</span>
-        </div>
+        <img
+          src={`${base}/images/Notaria-56-logo.png`}
+          alt="Notaría Pública No. 56"
+          class="footer-logo-img"
+        />
       </div>
       <p class="footer-notario">Lic. Sergio de Jesús Gil Valdez</p>
       <p class="footer-tagline">
@@ -84,31 +84,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   }
 
   .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.9rem;
   }
 
-  .footer-logo-icon {
-    font-size: 1.5rem;
-    color: var(--color-gold);
-  }
-
-  .footer-logo-main {
+  .footer-logo-img {
+    height: 4rem;
+    width: auto;
     display: block;
-    color: var(--color-white);
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 700;
-  }
-
-  .footer-logo-sub {
-    display: block;
-    color: var(--color-gold);
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    font-weight: 600;
   }
 
   .footer-notario {
