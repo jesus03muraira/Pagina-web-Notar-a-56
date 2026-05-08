@@ -1,10 +1,12 @@
 ---
 import RamoPage from '../../components/RamoPage.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <RamoPage
   titulo="Mercantil y Societario"
   intro="Constitución, modificación y operaciones corporativas de sociedades mercantiles y civiles, con apego al marco legal vigente."
+  imagen={`${base}/images/mercantil.jpg`}
   servicios={[
     'Constitución de sociedades',
     'Actas de asamblea',
