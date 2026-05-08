@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout title="Contacto" description="Contáctanos para agendar una cita o resolver tus dudas. Notaría Pública No. 56.">
@@ -16,9 +17,9 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <section class="section contacto-section">
-    <div class="container contacto-layout">
+    <div class="container">
 
-      <!-- Formulario -->
+      <!-- 1. Formulario "Envíanos un mensaje" -->
       <div class="form-wrapper">
         <h2>Envíanos un mensaje</h2>
         <p class="form-intro">
@@ -77,50 +78,17 @@ import Layout from '../layouts/Layout.astro';
         </form>
       </div>
 
-      <!-- Info lateral -->
-      <aside class="contacto-info">
-        <div class="info-card">
-          <h3>Información de contacto</h3>
-
-          <div class="info-item">
-            <span class="info-icon">📍</span>
-            <div>
-              <strong>Dirección</strong>
-              <p>Av. Cordillera 11, Cordillera Residencial Fase Dos<br />C.P. 66196, Santa Catarina, N.L.</p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <span class="info-icon">📞</span>
-            <div>
-              <strong>Teléfono</strong>
-              <p><a href="tel:+525500000000">55 0000 0000</a></p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <span class="info-icon">✉</span>
-            <div>
-              <strong>Correo electrónico</strong>
-              <p><a href="mailto:contacto@notaria56.mx">contacto@notaria56.mx</a></p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <span class="info-icon">🕐</span>
-            <div>
-              <strong>Horario de atención</strong>
-              <p>Lun – Vie: 9:00 – 18:00 hrs<br />Sáb: 9:00 – 13:00 hrs</p>
-            </div>
-          </div>
+      <!-- 2. Foto edificio + mapa Google Maps -->
+      <div class="visual-row">
+        <div class="visual-card">
+          <img src={`${base}/images/fotoed.png`} alt="Edificio Notaría Pública No. 56" />
         </div>
 
-        <!-- Mapa Google Maps -->
-        <div class="mapa-wrapper">
+        <div class="visual-card mapa-wrapper">
           <iframe
             src="https://maps.google.com/maps?q=Av.+Cordillera+11,+Sin+Nombre+de+Col+28,+Cordillera+Residencial+Fase+Dos,+66196+Cdad.+Santa+Catarina,+N.L.&output=embed&z=16"
             width="100%"
-            height="280"
+            height="100%"
             style="border:0;"
             allowfullscreen
             loading="lazy"
@@ -136,7 +104,43 @@ import Layout from '../layouts/Layout.astro';
             Ver en Google Maps →
           </a>
         </div>
-      </aside>
+      </div>
+
+      <!-- 3. Información de contacto en fila -->
+      <div class="info-row">
+        <div class="info-item">
+          <span class="info-icon">📍</span>
+          <div>
+            <strong>Dirección</strong>
+            <p>Av. Cordillera 11, Cordillera Residencial Fase Dos<br />C.P. 66196, Santa Catarina, N.L.</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-icon">📞</span>
+          <div>
+            <strong>Teléfono</strong>
+            <p><a href="tel:+525500000000">55 0000 0000</a></p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-icon">✉</span>
+          <div>
+            <strong>Correo electrónico</strong>
+            <p><a href="mailto:contacto@notaria56.mx">contacto@notaria56.mx</a></p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-icon">🕐</span>
+          <div>
+            <strong>Horario de atención</strong>
+            <p>Lun – Vie: 9:00 – 18:00 hrs<br />Sáb: 9:00 – 13:00 hrs</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 </Layout>
@@ -169,18 +173,12 @@ import Layout from '../layouts/Layout.astro';
     background: var(--color-cream);
   }
 
-  .contacto-layout {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 3.5rem;
-    align-items: start;
-  }
-
   .form-wrapper {
     background: var(--color-white);
     border: 1px solid var(--color-border);
     padding: 2.5rem;
     border-radius: 2px;
+    margin-bottom: 3rem;
   }
 
   .form-wrapper h2 {
@@ -275,43 +273,75 @@ import Layout from '../layouts/Layout.astro';
     font-size: 0.78rem;
   }
 
-  .contacto-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    position: sticky;
-    top: 5.5rem;
+  /* Foto + Mapa: dos columnas a la misma altura */
+  .visual-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
   }
 
-  .info-card {
+  .visual-card {
     background: var(--color-white);
     border: 1px solid var(--color-border);
-    padding: 2rem;
     border-radius: 2px;
+    overflow: hidden;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
   }
 
-  .info-card h3 {
-    font-family: var(--font-serif);
-    color: var(--color-navy);
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--color-gold);
+  .visual-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .mapa-wrapper iframe {
+    flex: 1;
+    width: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .mapa-link {
+    display: block;
+    background: var(--color-navy);
+    color: var(--color-gold);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-align: center;
+    padding: 0.7rem 1rem;
+    transition: background 0.2s;
+  }
+
+  .mapa-link:hover {
+    background: var(--color-navy-light);
+  }
+
+  /* Info de contacto en fila */
+  .info-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-gold);
+    padding: 2rem;
+    border-radius: 2px;
   }
 
   .info-item {
     display: flex;
     gap: 0.9rem;
-    margin-bottom: 1.5rem;
     align-items: flex-start;
   }
 
-  .info-item:last-child {
-    margin-bottom: 0;
-  }
-
   .info-icon {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     flex-shrink: 0;
     margin-top: 0.1rem;
   }
@@ -321,13 +351,14 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-navy);
     font-size: 0.85rem;
     letter-spacing: 0.03em;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
   }
 
   .info-item p {
     color: var(--color-text-muted);
     font-size: 0.875rem;
-    line-height: 1.6;
+    line-height: 1.55;
   }
 
   .info-item a {
@@ -339,41 +370,23 @@ import Layout from '../layouts/Layout.astro';
     color: var(--color-gold);
   }
 
-  .mapa-wrapper {
-    border-radius: 2px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-  }
-
-  .mapa-wrapper iframe {
-    display: block;
-    width: 100%;
-  }
-
-  .mapa-link {
-    display: block;
-    background: var(--color-navy);
-    color: var(--color-gold);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-align: center;
-    padding: 0.6rem 1rem;
-    transition: background 0.2s;
-  }
-
-  .mapa-link:hover {
-    background: var(--color-navy-light);
-  }
-
-  @media (max-width: 860px) {
-    .contacto-layout {
+  @media (max-width: 900px) {
+    .visual-row {
       grid-template-columns: 1fr;
     }
-    .contacto-info {
-      position: static;
+    .visual-card {
+      height: 360px;
     }
+    .info-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 540px) {
     .form-row {
+      grid-template-columns: 1fr;
+    }
+    .info-row {
       grid-template-columns: 1fr;
     }
   }
