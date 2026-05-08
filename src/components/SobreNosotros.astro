@@ -40,73 +40,69 @@ const bg = `${base}/images/fondonotaria.jpg`;
       </div>
     </div>
 
-    <!-- Layout en dos columnas -->
-    <div class="nosotros-layout">
-      <div class="nosotros-text">
-        <h3 class="nosotros-subheading">Una notaría con historia y compromiso</h3>
-        <p>
-          Somos una notaría con más de 15 años de trayectoria al servicio de Santa Catarina
-          y la Zona Metropolitana de Monterrey, brindando certeza jurídica a familias,
-          empresas y particulares.
-        </p>
-        <p>
-          Ofrecemos un servicio ágil y profesional, apegado al marco legal vigente, con la
-          atención cercana y personalizada que cada cliente merece. Nuestro equipo de abogados
-          acompaña cada trámite con claridad, eficiencia y discreción.
-        </p>
-        <p>
-          Somos miembros activos del Colegio de Notarios Públicos del Estado de Nuevo León
-          y del Colegio Nacional del Notariado Mexicano.
-        </p>
+    <!-- Layout en dos columnas → solo texto (sin aside) -->
+    <div class="nosotros-text">
+      <h3 class="nosotros-subheading">Una notaría con historia y compromiso</h3>
+      <p>
+        Somos una notaría con más de 15 años de trayectoria al servicio de Santa Catarina
+        y la Zona Metropolitana de Monterrey, brindando certeza jurídica a familias,
+        empresas y particulares.
+      </p>
+      <p>
+        Ofrecemos un servicio ágil y profesional, apegado al marco legal vigente, con la
+        atención cercana y personalizada que cada cliente merece. Nuestro equipo de abogados
+        acompaña cada trámite con claridad, eficiencia y discreción.
+      </p>
+      <p>
+        Somos miembros activos del Colegio de Notarios Públicos del Estado de Nuevo León
+        y del Colegio Nacional del Notariado Mexicano.
+      </p>
 
-        <ul class="valores-list">
-          <li>
-            <span class="valor-icon">✦</span>
-            <div>
-              <strong>Integridad</strong>
-              <span>Actuamos siempre conforme a la ley y la ética profesional.</span>
-            </div>
-          </li>
-          <li>
-            <span class="valor-icon">✦</span>
-            <div>
-              <strong>Confidencialidad</strong>
-              <span>Todos los asuntos son tratados con absoluta discreción.</span>
-            </div>
-          </li>
-          <li>
-            <span class="valor-icon">✦</span>
-            <div>
-              <strong>Agilidad</strong>
-              <span>Trámites eficientes sin sacrificar la calidad jurídica.</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="nosotros-aside">
-        <div class="notario-card">
-          <div class="notario-avatar">
-            <span>SG</span>
+      <ul class="valores-list">
+        <li>
+          <span class="valor-icon">✦</span>
+          <div>
+            <strong>Integridad</strong>
+            <span>Actuamos siempre conforme a la ley y la ética profesional.</span>
           </div>
-          <h3>Lic. Sergio de Jesús Gil Valdez</h3>
-          <p class="notario-cargo">Notario Público No. 56</p>
-          <p class="notario-bio">
-            Licenciado en Derecho por la UNAM, con maestría en Derecho Notarial
-            y Registral. Miembro activo del Colegio de Notarios.
-          </p>
-        </div>
+        </li>
+        <li>
+          <span class="valor-icon">✦</span>
+          <div>
+            <strong>Confidencialidad</strong>
+            <span>Todos los asuntos son tratados con absoluta discreción.</span>
+          </div>
+        </li>
+        <li>
+          <span class="valor-icon">✦</span>
+          <div>
+            <strong>Agilidad</strong>
+            <span>Trámites eficientes sin sacrificar la calidad jurídica.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
 
-        <div class="horario-card">
-          <h4>Horario de atención</h4>
-          <ul>
-            <li><span>Lunes – Viernes</span><strong>9:00 – 18:00</strong></li>
-            <li><span>Sábado</span><strong>9:00 – 13:00</strong></li>
-            <li><span>Domingo</span><strong>Cerrado</strong></li>
-          </ul>
+    <!-- Horario debajo del contenido principal -->
+    <div class="horario-bottom">
+      <div class="horario-grid">
+        <div class="horario-item">
+          <span class="horario-dia">Lunes – Viernes</span>
+          <span class="horario-hora">9:00 – 18:00</span>
+        </div>
+        <div class="horario-sep"></div>
+        <div class="horario-item">
+          <span class="horario-dia">Sábado</span>
+          <span class="horario-hora">9:00 – 13:00</span>
+        </div>
+        <div class="horario-sep"></div>
+        <div class="horario-item">
+          <span class="horario-dia">Domingo</span>
+          <span class="horario-hora">Cerrado</span>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -209,14 +205,6 @@ const bg = `${base}/images/fondonotaria.jpg`;
     background: rgba(255,255,255,0.2);
   }
 
-  /* Layout dos columnas */
-  .nosotros-layout {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
   .nosotros-subheading {
     font-family: var(--font-display);
     color: var(--color-white);
@@ -264,97 +252,56 @@ const bg = `${base}/images/fondonotaria.jpg`;
     font-size: 0.875rem;
   }
 
-  /* Sidebar */
-  .notario-card {
-    background: var(--color-navy);
-    color: var(--color-white);
-    padding: 2rem;
-    border-radius: 4px;
-    text-align: center;
-    margin-bottom: 1.5rem;
+  /* Horario horizontal debajo del texto */
+  .horario-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
   }
 
-  .notario-avatar {
-    width: 80px;
-    height: 80px;
-    background: var(--color-gold);
-    border-radius: 50%;
+  .horario-grid {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.25rem;
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    color: var(--color-navy-dark);
-    font-weight: 700;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .horario-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .horario-dia {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .horario-hora {
+    color: var(--color-gold-pale);
+    font-size: 1.05rem;
+    font-weight: 600;
     letter-spacing: 0.04em;
   }
 
-  .notario-card h3 {
-    color: var(--color-white);
-    font-family: var(--font-display);
-    font-size: 1.05rem;
-    margin-bottom: 0.25rem;
-  }
-
-  .notario-cargo {
-    color: var(--color-gold);
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    margin-bottom: 1rem;
-  }
-
-  .notario-bio {
-    color: rgba(255,255,255,0.7);
-    font-size: 0.875rem;
-    line-height: 1.7;
-  }
-
-  .horario-card {
-    background: rgba(8, 20, 40, 0.65);
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 1.5rem 2rem;
-    border-radius: 4px;
-  }
-
-  .horario-card h4 {
-    font-family: var(--font-display);
-    color: var(--color-white);
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--color-gold);
-  }
-
-  .horario-card ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  .horario-card li {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.65);
-  }
-
-  .horario-card strong {
-    color: var(--color-gold-pale);
+  .horario-sep {
+    width: 1px;
+    height: 2.5rem;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
   }
 
   @media (max-width: 860px) {
-    .nosotros-layout {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
     .nosotros-intro {
       margin-bottom: 3rem;
     }
   }
 
   @media (max-width: 600px) {
+    .horario-sep { display: none; }
+    .horario-grid { gap: 1.25rem; }
     .stat-divider {
       display: none;
     }
