@@ -5,9 +5,10 @@ interface Props {
   titulo: string;
   intro: string;
   servicios: string[];
+  imagen?: string;
 }
 
-const { titulo, intro, servicios } = Astro.props;
+const { titulo, intro, servicios, imagen } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -19,6 +20,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p class="ramo-intro">{intro}</p>
     </div>
   </section>
+
+  {imagen && (
+    <div class="ramo-imagen">
+      <img src={imagen} alt={titulo} />
+    </div>
+  )}
 
   <section class="section ramo-section">
     <div class="container">
@@ -149,6 +156,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     margin: 0;
   }
 
+  .ramo-imagen {
+    width: 100%;
+    max-height: 480px;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .ramo-imagen img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
   @media (max-width: 700px) {
     .ramo-list {
       grid-template-columns: 1fr;
@@ -156,6 +178,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     .ramo-cta {
       flex-direction: column;
       align-items: flex-start;
+    }
+    .ramo-imagen img {
+      height: 260px;
     }
   }
 </style>

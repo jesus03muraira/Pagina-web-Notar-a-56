@@ -1,10 +1,12 @@
 ---
 import RamoPage from '../../components/RamoPage.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <RamoPage
   titulo="Inmobiliarios"
   intro="Trámites notariales relacionados con bienes raíces, transmisión de propiedad y derechos reales sobre inmuebles."
+  imagen={`${base}/images/inmob.jpg`}
   servicios={[
     'Compraventa de inmuebles',
     'Donación de inmuebles',
