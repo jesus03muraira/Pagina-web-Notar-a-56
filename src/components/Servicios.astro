@@ -1,34 +1,42 @@
 ---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 const servicios = [
   {
-    icon: '🏠',
-    titulo: 'Escrituras y Protocolos',
-    desc: 'Compraventa de inmuebles, constitución de sociedades, donaciones y cualquier acto que requiera certeza jurídica.',
+    slug: 'inmobiliarios',
+    titulo: 'Inmobiliarios',
+    desc: 'Compraventa, donación, hipotecas y escrituración de propiedad con certeza jurídica plena.',
+    icon: `<path d="M6 42h36"/><path d="M10 42V18l14-9 14 9v24"/><path d="M16 42V24h4v18M28 42V24h4v18"/><path d="M10 18h28"/>`,
   },
   {
-    icon: '📜',
-    titulo: 'Poderes Notariales',
-    desc: 'Poderes generales, especiales y para pleitos y cobranzas. Redactados con precisión legal y firmados ante fedatario.',
+    slug: 'mercantil-y-societario',
+    titulo: 'Mercantil y Societario',
+    desc: 'Constitución de sociedades, asambleas, fusiones, escisiones y reformas estatutarias.',
+    icon: `<rect x="9" y="10" width="30" height="32"/><path d="M9 18h30M9 26h30M9 34h30"/><path d="M17 10v32M24 10v32M31 10v32"/>`,
   },
   {
-    icon: '🕊',
-    titulo: 'Testamentos',
-    desc: 'Planificación sucesoria con total confidencialidad. Testamento público abierto y asesoría patrimonial personalizada.',
+    slug: 'patrimoniales-y-sucesorios',
+    titulo: 'Patrimoniales y Sucesorios',
+    desc: 'Testamentos, adjudicación por herencia y declaraciones patrimoniales con total discreción.',
+    icon: `<path d="M14 6h16l8 8v28H14z"/><path d="M30 6v8h8"/><path d="M19 22h14M19 28h14M19 34h10"/>`,
   },
   {
-    icon: '✒',
-    titulo: 'Actas Notariales',
-    desc: 'Actas de hechos, asambleas, notificaciones, protocolización de documentos privados y declaraciones juradas.',
+    slug: 'familiares',
+    titulo: 'Familiares',
+    desc: 'Capitulaciones matrimoniales, convenios de divorcio y reconocimiento de hijos.',
+    icon: `<circle cx="17" cy="16" r="5"/><circle cx="31" cy="16" r="5"/><path d="M8 38c0-5 4-9 9-9s9 4 9 9"/><path d="M22 38c0-5 4-9 9-9s9 4 9 9"/>`,
   },
   {
-    icon: '✅',
-    titulo: 'Certificaciones',
-    desc: 'Cotejo de documentos, certificación de firmas, copias certificadas y apostilla de documentos para el extranjero.',
+    slug: 'poderes',
+    titulo: 'Poderes',
+    desc: 'Poderes generales y especiales para pleitos, administración, dominio y revocaciones.',
+    icon: `<path d="M30 8l10 10-22 22-10-10z"/><path d="M30 8l4-4 10 10-4 4"/><path d="M8 40l-2 2 8-2z"/><path d="M22 16l10 10"/>`,
   },
   {
-    icon: '⚖',
-    titulo: 'Asesoría Jurídica',
-    desc: 'Consulta legal previa a la firma de cualquier acto. Orientación en derecho civil, mercantil, familiar y notarial.',
+    slug: 'fe-publica-y-certificaciones',
+    titulo: 'Fe Pública y Certificaciones',
+    desc: 'Fe de hechos, certificación de documentos, ratificación de firmas y avisos notariales.',
+    icon: `<circle cx="24" cy="20" r="11"/><circle cx="24" cy="20" r="6"/><path d="M17 30l-3 12 10-5 10 5-3-12"/>`,
   },
 ];
 ---
@@ -40,25 +48,37 @@ const servicios = [
       <h2 class="section-title">Servicios Notariales</h2>
       <div class="section-divider"></div>
       <p class="servicios-intro">
-        Ofrecemos una amplia gama de servicios notariales para personas físicas y
-        morales, con la garantía de la fe pública y el respaldo de más de dos décadas
-        de experiencia.
+        Cubrimos los principales ramos del derecho notarial. Selecciona un área para
+        conocer el detalle de los trámites que ofrecemos.
       </p>
     </div>
 
     <div class="servicios-grid">
       {servicios.map(s => (
-        <div class="servicio-card">
-          <span class="servicio-icon">{s.icon}</span>
+        <a class="servicio-card" href={`${base}/servicios/${s.slug}`}>
+          <span class="servicio-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 48 48"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              set:html={s.icon}
+            />
+          </span>
           <h3 class="servicio-titulo">{s.titulo}</h3>
           <p class="servicio-desc">{s.desc}</p>
-        </div>
+          <span class="servicio-link">Ver más <span class="arrow">→</span></span>
+        </a>
       ))}
     </div>
 
     <div class="servicios-cta">
-      <p>¿No encuentras el servicio que necesitas?</p>
-      <a href="/contacto" class="btn btn-primary">Contáctanos</a>
+      <p>¿No encuentras el trámite que necesitas?</p>
+      <a href={`${base}/contacto`} class="btn btn-primary">Contáctanos</a>
     </div>
   </div>
 </section>
@@ -89,36 +109,76 @@ const servicios = [
   }
 
   .servicio-card {
+    display: flex;
+    flex-direction: column;
     background: var(--color-white);
     border: 1px solid var(--color-border);
     border-top: 3px solid var(--color-gold);
-    padding: 2rem 1.5rem;
+    padding: 2.25rem 1.75rem 2rem;
     border-radius: 2px;
-    transition: box-shadow 0.25s, transform 0.25s;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
   }
 
   .servicio-card:hover {
-    box-shadow: 0 8px 24px rgba(26,46,90,0.1);
-    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(13,27,46,0.12);
+    transform: translateY(-4px);
   }
 
   .servicio-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 1rem;
+    color: var(--color-gold);
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .servicio-icon svg {
+    width: 100%;
+    height: 100%;
   }
 
   .servicio-titulo {
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-weight: 400;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
     color: var(--color-navy);
     margin-bottom: 0.6rem;
   }
 
   .servicio-desc {
     color: var(--color-text-muted);
-    font-size: 0.9rem;
-    line-height: 1.7;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  .servicio-link {
+    color: var(--color-gold);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .servicio-link .arrow {
+    transition: transform 0.25s;
+  }
+
+  .servicio-card:hover .servicio-link {
+    color: var(--color-navy);
+  }
+
+  .servicio-card:hover .servicio-link .arrow {
+    transform: translateX(4px);
   }
 
   .servicios-cta {

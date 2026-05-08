@@ -2,12 +2,12 @@
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const servicios = [
-  'Escrituras y Protocolos',
-  'Poderes Notariales',
-  'Testamentos',
-  'Actas Notariales',
-  'Certificaciones',
-  'Asesoría Jurídica',
+  { slug: 'inmobiliarios', label: 'Inmobiliarios' },
+  { slug: 'mercantil-y-societario', label: 'Mercantil y Societario' },
+  { slug: 'patrimoniales-y-sucesorios', label: 'Patrimoniales y Sucesorios' },
+  { slug: 'familiares', label: 'Familiares' },
+  { slug: 'poderes', label: 'Poderes' },
+  { slug: 'fe-publica-y-certificaciones', label: 'Fe Pública y Certificaciones' },
 ];
 
 const navLinks = [
@@ -43,7 +43,7 @@ const currentPath = Astro.url.pathname;
         <ul class="dropdown-menu">
           {servicios.map(s => (
             <li>
-              <a href={`${base}/#servicios`}>{s}</a>
+              <a href={`${base}/servicios/${s.slug}`}>{s.label}</a>
             </li>
           ))}
         </ul>
