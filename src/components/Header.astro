@@ -20,7 +20,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="header" id="header">
-  <div class="container header-inner">
+  <div class="header-inner">
     <a href={`${base}/`} class="logo" aria-label="Notaría 56 - Inicio">
       <img
         src={`${base}/images/notaria56-new.png`}
@@ -90,6 +90,8 @@ const currentPath = Astro.url.pathname;
     justify-content: space-between;
     height: 5rem;
     gap: 1rem;
+    width: 100%;
+    padding: 0 1.5rem 0 1rem;
   }
 
   .logo {
