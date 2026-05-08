@@ -1,10 +1,12 @@
 ---
 import RamoPage from '../../components/RamoPage.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <RamoPage
   titulo="Fe Pública y Certificaciones"
   intro="Hacemos constar hechos, ratificamos firmas y certificamos documentos al amparo de la fe pública notarial."
+  imagen={`${base}/images/cert.jpg`}
   servicios={[
     'Fe de hechos',
     'Certificación de documentos',
