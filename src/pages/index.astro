@@ -13,25 +13,18 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <Servicios />
 
   <!-- Sección de Videos -->
-  <section class="section videos-section">
-    <div class="container">
-      <div class="videos-header">
-        <p class="section-subtitle">Conócenos de cerca</p>
-        <h2 class="section-title">Notaría en acción</h2>
-        <div class="section-divider"></div>
-      </div>
-      <div class="videos-grid">
-        <div class="video-card">
-          <video controls preload="metadata" playsinline>
-            <source src={`${base}/images/video1.mp4`} type="video/mp4" />
-          </video>
-        </div>
-        <div class="video-card">
-          <video controls preload="metadata" playsinline>
-            <source src={`${base}/images/video2.mp4`} type="video/mp4" />
-          </video>
-        </div>
-      </div>
+  <section class="videos-section">
+    <div class="videos-overlay">
+      <p class="section-subtitle videos-subtitle">Conócenos de cerca</p>
+      <h2 class="videos-titulo">Notaría en acción</h2>
+    </div>
+    <div class="videos-grid">
+      <video controls preload="metadata" playsinline>
+        <source src={`${base}/images/video1.mp4`} type="video/mp4" />
+      </video>
+      <video controls preload="metadata" playsinline>
+        <source src={`${base}/images/video2.mp4`} type="video/mp4" />
+      </video>
     </div>
   </section>
 
@@ -52,51 +45,55 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <style>
   .videos-section {
-    background: var(--color-navy-dark);
-    padding: 5rem 0;
+    position: relative;
     font-family: var(--font-display);
     font-weight: 300;
   }
 
-  .videos-header {
-    max-width: 520px;
-    margin-bottom: 3rem;
+  .videos-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 2.5rem 3rem;
+    background: linear-gradient(to bottom, rgba(8,20,40,0.72) 0%, transparent 100%);
+    pointer-events: none;
   }
 
-  .videos-header .section-subtitle {
-    color: var(--color-gold);
+  .videos-subtitle {
+    color: var(--color-gold) !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    margin-bottom: 0.35rem;
   }
 
-  .videos-header .section-title {
+  .videos-titulo {
     color: var(--color-white);
-  }
-
-  .videos-header .section-divider {
-    background: var(--color-gold);
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 300;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    margin: 0;
   }
 
   .videos-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
   }
 
-  .video-card {
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-  }
-
-  .video-card video {
+  .videos-grid video {
     width: 100%;
     display: block;
     aspect-ratio: 16 / 9;
-    background: #000;
+    object-fit: cover;
   }
 
   @media (max-width: 700px) {
     .videos-grid {
       grid-template-columns: 1fr;
+    }
+    .videos-overlay {
+      padding: 1.5rem;
     }
   }
 
