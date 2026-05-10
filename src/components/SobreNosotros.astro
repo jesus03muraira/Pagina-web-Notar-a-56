@@ -40,47 +40,53 @@ const bg = `${base}/images/fondonotaria.jpg`;
       </div>
     </div>
 
-    <!-- Layout en dos columnas → solo texto (sin aside) -->
-    <div class="nosotros-text">
-      <h3 class="nosotros-subheading">Una notaría con historia y compromiso</h3>
-      <p>
-        Somos una notaría con más de 15 años de trayectoria al servicio de Santa Catarina
-        y la Zona Metropolitana de Monterrey, brindando certeza jurídica a familias,
-        empresas y particulares.
-      </p>
-      <p>
-        Ofrecemos un servicio ágil y profesional, apegado al marco legal vigente, con la
-        atención cercana y personalizada que cada cliente merece. Nuestro equipo de abogados
-        acompaña cada trámite con claridad, eficiencia y discreción.
-      </p>
-      <p>
-        Somos miembros activos del Colegio de Notarios Públicos del Estado de Nuevo León
-        y del Colegio Nacional del Notariado Mexicano.
-      </p>
+    <!-- Layout en dos columnas → texto + foto -->
+    <div class="nosotros-cols">
+      <div class="nosotros-text">
+        <h3 class="nosotros-subheading">Una notaría con historia y compromiso</h3>
+        <p>
+          Somos una notaría con más de 15 años de trayectoria al servicio de Santa Catarina
+          y la Zona Metropolitana de Monterrey, brindando certeza jurídica a familias,
+          empresas y particulares.
+        </p>
+        <p>
+          Ofrecemos un servicio ágil y profesional, apegado al marco legal vigente, con la
+          atención cercana y personalizada que cada cliente merece. Nuestro equipo de abogados
+          acompaña cada trámite con claridad, eficiencia y discreción.
+        </p>
+        <p>
+          Somos miembros activos del Colegio de Notarios Públicos del Estado de Nuevo León
+          y del Colegio Nacional del Notariado Mexicano.
+        </p>
 
-      <ul class="valores-list">
-        <li>
-          <span class="valor-icon">✦</span>
-          <div>
-            <strong>Integridad</strong>
-            <span>Actuamos siempre conforme a la ley y la ética profesional.</span>
-          </div>
-        </li>
-        <li>
-          <span class="valor-icon">✦</span>
-          <div>
-            <strong>Confidencialidad</strong>
-            <span>Todos los asuntos son tratados con absoluta discreción.</span>
-          </div>
-        </li>
-        <li>
-          <span class="valor-icon">✦</span>
-          <div>
-            <strong>Agilidad</strong>
-            <span>Trámites eficientes sin sacrificar la calidad jurídica.</span>
-          </div>
-        </li>
-      </ul>
+        <ul class="valores-list">
+          <li>
+            <span class="valor-icon">✦</span>
+            <div>
+              <strong>Integridad</strong>
+              <span>Actuamos siempre conforme a la ley y la ética profesional.</span>
+            </div>
+          </li>
+          <li>
+            <span class="valor-icon">✦</span>
+            <div>
+              <strong>Confidencialidad</strong>
+              <span>Todos los asuntos son tratados con absoluta discreción.</span>
+            </div>
+          </li>
+          <li>
+            <span class="valor-icon">✦</span>
+            <div>
+              <strong>Agilidad</strong>
+              <span>Trámites eficientes sin sacrificar la calidad jurídica.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nosotros-foto">
+        <img src={`${base}/images/notario1.jpg`} alt="Notaría Pública No. 56" />
+      </div>
     </div>
 
     <!-- Horario debajo del contenido principal -->
@@ -205,6 +211,27 @@ const bg = `${base}/images/fondonotaria.jpg`;
     background: rgba(255,255,255,0.2);
   }
 
+  .nosotros-cols {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .nosotros-foto {
+    border: 3px solid var(--color-gold);
+    border-radius: 2px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .nosotros-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
   .nosotros-subheading {
     font-family: var(--font-display);
     color: var(--color-white);
@@ -296,6 +323,12 @@ const bg = `${base}/images/fondonotaria.jpg`;
   @media (max-width: 860px) {
     .nosotros-intro {
       margin-bottom: 3rem;
+    }
+    .nosotros-cols {
+      grid-template-columns: 1fr;
+    }
+    .nosotros-foto {
+      max-width: 340px;
     }
   }
 
