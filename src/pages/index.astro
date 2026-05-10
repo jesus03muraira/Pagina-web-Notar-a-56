@@ -52,27 +52,39 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <style>
   .videos-section {
-    background: var(--color-cream);
+    background: var(--color-navy-dark);
+    padding: 5rem 0;
+    font-family: var(--font-display);
+    font-weight: 300;
   }
 
   .videos-header {
     max-width: 520px;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .videos-header .section-subtitle {
+    color: var(--color-gold);
+  }
+
+  .videos-header .section-title {
+    color: var(--color-white);
+  }
+
+  .videos-header .section-divider {
+    background: var(--color-gold);
   }
 
   .videos-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .video-card {
-    background: var(--color-white);
-    border: 1px solid var(--color-border);
-    border-top: 3px solid var(--color-gold);
-    border-radius: 2px;
+    border-radius: 4px;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(26,46,90,0.07);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
   }
 
   .video-card video {
