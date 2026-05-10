@@ -18,14 +18,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <p class="section-subtitle videos-subtitle">Conócenos de cerca</p>
       <h2 class="videos-titulo">Notaría en acción</h2>
     </div>
-    <div class="videos-grid">
-      <video controls preload="metadata" playsinline>
-        <source src={`${base}/images/video1.mp4`} type="video/mp4" />
-      </video>
-      <video controls preload="metadata" playsinline>
-        <source src={`${base}/images/video2.mp4`} type="video/mp4" />
-      </video>
-    </div>
+    <video class="vid vid-active" id="vid1" autoplay muted loop playsinline>
+      <source src={`${base}/images/video1.mp4`} type="video/mp4" />
+    </video>
+    <video class="vid" id="vid2" autoplay muted loop playsinline>
+      <source src={`${base}/images/video2.mp4`} type="video/mp4" />
+    </video>
   </section>
 
   <!-- Banner CTA -->
@@ -46,8 +44,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 <style>
   .videos-section {
     position: relative;
+    width: 100%;
+    height: 85vh;
+    overflow: hidden;
     font-family: var(--font-display);
     font-weight: 300;
+  }
+
+  .vid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  .vid-active {
+    opacity: 1;
   }
 
   .videos-overlay {
@@ -57,7 +72,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     right: 0;
     z-index: 2;
     padding: 2.5rem 3rem;
-    background: linear-gradient(to bottom, rgba(8,20,40,0.72) 0%, transparent 100%);
+    background: linear-gradient(to bottom, rgba(8,20,40,0.65) 0%, transparent 100%);
     pointer-events: none;
   }
 
@@ -76,25 +91,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     margin: 0;
   }
 
-  .videos-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .videos-grid video {
-    width: 100%;
-    display: block;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-  }
-
   @media (max-width: 700px) {
-    .videos-grid {
-      grid-template-columns: 1fr;
-    }
-    .videos-overlay {
-      padding: 1.5rem;
-    }
+    .videos-section { height: 60vw; min-height: 280px; }
+    .videos-overlay { padding: 1.25rem 1.5rem; }
   }
 
   .cta-banner {
@@ -141,3 +140,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     }
   }
 </style>
+
+<script>
+  const videos = [
+    document.getElementById('vid1') as HTMLVideoElement,
+    document.getElementById('vid2') as HTMLVideoElement,
+  ];
+  let current = 0;
+
+  setInterval(() => {
+    videos[current].classList.remove('vid-active');
+    current = current === 0 ? 1 : 0;
+    videos[current].classList.add('vid-active');
+  }, 8000);
+</script>
