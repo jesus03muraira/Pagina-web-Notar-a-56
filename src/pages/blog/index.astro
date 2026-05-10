@@ -4,12 +4,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const posts = [
   {
-    slug: 'que-es-una-escritura-publica',
-    titulo: '¿Qué es una escritura pública y para qué sirve?',
-    fecha: '2 de mayo, 2025',
-    categoria: 'Derecho Inmobiliario',
+    slug: 'prohiben-latifundios-115-anos',
+    titulo: 'Prohíben los latifundios hace 115 años',
+    fecha: '20 de noviembre, 2024',
+    categoria: 'Derecho Agrario',
     resumen:
-      'La escritura pública es el documento más importante en cualquier transacción inmobiliaria. En este artículo explicamos qué es, cuándo se necesita y cuáles son sus efectos legales.',
+      'A propósito del aniversario de la Revolución Mexicana, esta publicación explica el origen constitucional de la prohibición de los latifundios y los límites que establece el artículo 27 para la pequeña propiedad en México.',
   },
   {
     slug: 'como-hacer-un-testamento',
@@ -67,10 +67,10 @@ const posts = [
               <span class="post-fecha">{post.fecha}</span>
             </div>
             <h2 class="post-titulo">
-              <a href={`/blog/${post.slug}`}>{post.titulo}</a>
+              <a href={`${base}/blog/${post.slug}`}>{post.titulo}</a>
             </h2>
             <p class="post-resumen">{post.resumen}</p>
-            <a href={`/blog/${post.slug}`} class="post-link">
+            <a href={`${base}/blog/${post.slug}`} class="post-link">
               Leer artículo <span aria-hidden="true">→</span>
             </a>
           </article>
