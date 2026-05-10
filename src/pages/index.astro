@@ -12,6 +12,29 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <SobreNosotros />
   <Servicios />
 
+  <!-- Sección de Videos -->
+  <section class="section videos-section">
+    <div class="container">
+      <div class="videos-header">
+        <p class="section-subtitle">Conócenos de cerca</p>
+        <h2 class="section-title">Notaría en acción</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="videos-grid">
+        <div class="video-card">
+          <video controls preload="metadata" playsinline>
+            <source src={`${base}/images/video1.mp4`} type="video/mp4" />
+          </video>
+        </div>
+        <div class="video-card">
+          <video controls preload="metadata" playsinline>
+            <source src={`${base}/images/video2.mp4`} type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Banner CTA -->
   <section class="cta-banner">
     <div class="container cta-inner">
@@ -28,6 +51,43 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </Layout>
 
 <style>
+  .videos-section {
+    background: var(--color-cream);
+  }
+
+  .videos-header {
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+  }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .video-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-gold);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(26,46,90,0.07);
+  }
+
+  .video-card video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    background: #000;
+  }
+
+  @media (max-width: 700px) {
+    .videos-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .cta-banner {
     background: var(--color-navy);
     padding: 4rem 0;
