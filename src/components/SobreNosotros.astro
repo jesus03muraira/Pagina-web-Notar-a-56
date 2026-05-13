@@ -29,7 +29,7 @@ const bg = `${base}/images/fondonotaria.jpg`;
         </div>
         <div class="stat-divider"></div>
         <div class="stat">
-          <span class="stat-num">+1,000</span>
+          <span class="stat-num" id="counter-escrituras">+0</span>
           <span class="stat-label">Escrituras firmadas</span>
         </div>
         <div class="stat-divider"></div>
@@ -343,3 +343,34 @@ const bg = `${base}/images/fondonotaria.jpg`;
     }
   }
 </style>
+
+<script>
+  const el = document.getElementById('counter-escrituras');
+  if (el) {
+    const target = 1000;
+    const duration = 1800;
+    let started = false;
+
+    const run = () => {
+      if (started) return;
+      started = true;
+      const start = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        // easeOutQuart — arranca rápido y desacelera al llegar a 1000
+        const eased = 1 - Math.pow(1 - progress, 4);
+        const value = Math.floor(eased * target);
+        el.textContent = `+${value.toLocaleString('es-MX')}`;
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = '+1,000';
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(
+      entries => { if (entries[0].isIntersecting) run(); },
+      { threshold: 0.4 }
+    );
+    observer.observe(el);
+  }
+</script>
