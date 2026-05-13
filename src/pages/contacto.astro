@@ -51,13 +51,61 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
               <label for="servicio">Servicio de interés</label>
               <select id="servicio" name="servicio">
                 <option value="">Selecciona un servicio...</option>
-                <option>Escrituras y Protocolos</option>
-                <option>Poderes Notariales</option>
-                <option>Testamentos</option>
-                <option>Actas Notariales</option>
-                <option>Certificaciones</option>
-                <option>Asesoría Jurídica</option>
-                <option>Otro</option>
+
+                <optgroup label="Inmobiliarios">
+                  <option>Compraventa de inmuebles</option>
+                  <option>Donación de inmuebles</option>
+                  <option>Constitución de Hipoteca</option>
+                  <option>Escrituración de propiedad</option>
+                  <option>Dación en Pago</option>
+                  <option>Fusión de Inmuebles</option>
+                  <option>Subdivisión de Inmuebles</option>
+                  <option>Constitución de Usufructo Vitalicio o Temporal</option>
+                  <option>Constitución de Régimen de Propiedad en Condominio</option>
+                </optgroup>
+
+                <optgroup label="Mercantil y Societario">
+                  <option>Constitución de sociedades</option>
+                  <option>Asambleas</option>
+                  <option>Fusiones</option>
+                  <option>Escisiones</option>
+                  <option>Reformas estatutarias</option>
+                </optgroup>
+
+                <optgroup label="Patrimoniales y Sucesorios">
+                  <option>Testamentos</option>
+                  <option>Adjudicación por herencia</option>
+                  <option>Declaraciones patrimoniales</option>
+                  <option>Sucesión testamentaria</option>
+                  <option>Sucesión intestamentaria</option>
+                  <option>Protocolización de Hijuela</option>
+                  <option>Cesión de Derechos Hereditarios</option>
+                  <option>Repudio de Derechos Hereditarios</option>
+                </optgroup>
+
+                <optgroup label="Familiares">
+                  <option>Capitulaciones matrimoniales</option>
+                  <option>Convenios de divorcio</option>
+                  <option>Reconocimiento de hijos</option>
+                </optgroup>
+
+                <optgroup label="Poderes">
+                  <option>Poderes para pleitos y cobranzas</option>
+                  <option>Poderes de administración</option>
+                  <option>Poderes de dominio</option>
+                  <option>Revocaciones</option>
+                </optgroup>
+
+                <optgroup label="Fe Pública y Certificaciones">
+                  <option>Fe de hechos</option>
+                  <option>Certificación de documentos</option>
+                  <option>Ratificación de firmas</option>
+                  <option>Protocolización de actas</option>
+                  <option>Actas fuera de protocolo</option>
+                  <option>Avisos notariales</option>
+                </optgroup>
+
+                <option value="otro">Otro</option>
               </select>
             </div>
           </div>
