@@ -1,15 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+interface Seccion {
+  titulo: string;
+  items: string[];
+}
+
+interface ServicioDetalle {
+  titulo: string;
+  secciones: Seccion[];
+}
+
+type Servicio = string | ServicioDetalle;
+
 interface Props {
   titulo: string;
   intro: string;
-  servicios: string[];
+  servicios: Servicio[];
   imagen?: string;
 }
 
 const { titulo, intro, servicios, imagen } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+function esDetalle(s: Servicio): s is ServicioDetalle {
+  return typeof s === 'object';
+}
 ---
 
 <Layout title={titulo}>
@@ -30,12 +46,39 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="section ramo-section">
     <div class="container">
       <h2 class="ramo-subtitle">Trámites que ofrecemos</h2>
+
       <ul class="ramo-list">
         {servicios.map(s => (
-          <li>
-            <span class="ramo-bullet">✦</span>
-            <span>{s}</span>
-          </li>
+          esDetalle(s) ? (
+            <li class="ramo-item-accordion">
+              <details>
+                <summary>
+                  <span class="ramo-bullet">✦</span>
+                  <span class="ramo-item-titulo">{s.titulo}</span>
+                  <span class="ramo-chevron">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </summary>
+                <div class="ramo-requisitos">
+                  {s.secciones.map(sec => (
+                    <div class="req-seccion">
+                      <h4 class="req-titulo">{sec.titulo}</h4>
+                      <ol class="req-lista">
+                        {sec.items.map(item => (
+                          <li>{item}</li>
+                        ))}
+                      </ol>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            </li>
+          ) : (
+            <li class="ramo-item-simple">
+              <span class="ramo-bullet">✦</span>
+              <span>{s}</span>
+            </li>
+          )
         ))}
       </ul>
 
@@ -110,15 +153,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   .ramo-list {
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
     max-width: 820px;
     margin: 0 0 3.5rem;
     padding: 0;
   }
 
-  .ramo-list li {
+  /* Servicios simples (sin detalle) */
+  .ramo-item-simple {
     display: flex;
     align-items: flex-start;
     gap: 0.85rem;
@@ -129,6 +173,92 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     color: var(--color-navy);
     font-size: 0.98rem;
     line-height: 1.5;
+  }
+
+  /* Servicios con acordeón */
+  .ramo-item-accordion {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-gold);
+  }
+
+  .ramo-item-accordion details {
+    width: 100%;
+  }
+
+  .ramo-item-accordion summary {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1.1rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    color: var(--color-navy);
+    font-size: 0.98rem;
+    line-height: 1.5;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .ramo-item-accordion summary::-webkit-details-marker { display: none; }
+
+  .ramo-item-accordion summary:hover {
+    background: var(--color-cream);
+  }
+
+  .ramo-item-titulo {
+    flex: 1;
+    font-weight: 500;
+  }
+
+  .ramo-chevron {
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+
+  .ramo-item-accordion details[open] .ramo-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Contenido desplegable */
+  .ramo-requisitos {
+    padding: 0 1.5rem 1.5rem 3rem;
+    border-top: 1px solid var(--color-border);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem 2.5rem;
+  }
+
+  .req-seccion {
+    padding-top: 1.25rem;
+  }
+
+  .req-titulo {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(158,124,63,0.3);
+  }
+
+  .req-lista {
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .req-lista li {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
   }
 
   .ramo-bullet {
@@ -181,6 +311,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     }
     .ramo-imagen img {
       height: 260px;
+    }
+    .ramo-requisitos {
+      grid-template-columns: 1fr;
+      padding-left: 1.5rem;
     }
   }
 </style>

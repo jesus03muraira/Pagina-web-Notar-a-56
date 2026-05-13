@@ -8,7 +8,27 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   intro="Trámites notariales relacionados con bienes raíces, transmisión de propiedad y derechos reales sobre inmuebles."
   imagen={`${base}/images/inmob.jpg`}
   servicios={[
-    'Compraventa de inmuebles',
+    {
+      titulo: 'Compraventa de inmuebles',
+      secciones: [
+        {
+          titulo: 'Vendedor',
+          items: [
+            'Título de Propiedad de él o los vendedores.',
+            'Recibo del Impuesto Predial al corriente en sus pagos.',
+            'Acta de Matrimonio de los vendedores para el caso de que hayan adquirido el inmueble durante el matrimonio.',
+            'Último recibo pagado del servicio de agua y drenaje, y si es casa habitación, recibos del servicio de energía eléctrica o de telefonía fija.',
+            'Identificación oficial de él o de los vendedores (Credencial del INE o pasaporte vigente).',
+          ],
+        },
+        {
+          titulo: 'Comprador',
+          items: [
+            'Identificación oficial de él o de los compradores (Credencial del INE o pasaporte vigente).',
+          ],
+        },
+      ],
+    },
     'Donación de inmuebles',
     'Constitución de Hipoteca',
     'Escrituración de propiedad',
