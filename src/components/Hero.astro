@@ -9,9 +9,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="slide" style={`background-image: url('${base}/images/Foto.fachada.jpg')`}>
       <div class="slide-overlay"></div>
       <div class="hero-title-wrap">
-        <span class="hero-line"></span>
-        <h1 class="hero-title">Notaría Pública 56</h1>
-        <span class="hero-line"></span>
+        <span class="hero-line hero-line--anim"></span>
+        <h1 class="hero-title hero-title--anim">Notaría Pública 56</h1>
+        <span class="hero-line hero-line--anim"></span>
       </div>
     </div>
 
@@ -101,6 +101,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     margin: 0;
     padding-left: 0.32em;
     white-space: nowrap;
+  }
+
+  /* Animación de entrada del título */
+  @keyframes titleReveal {
+    0%   { opacity: 0; letter-spacing: 0.04em; }
+    100% { opacity: 1; letter-spacing: 0.32em; }
+  }
+
+  @keyframes lineReveal {
+    0%   { transform: scaleX(0); opacity: 0; }
+    100% { transform: scaleX(1); opacity: 1; }
+  }
+
+  .hero-title--anim {
+    animation: titleReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+  }
+
+  .hero-line--anim {
+    transform-origin: center;
+    animation: lineReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
   }
 
   @media (max-width: 600px) {
