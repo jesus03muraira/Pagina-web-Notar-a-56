@@ -204,8 +204,10 @@ const servicios = [
 
   /* ── Nav sticky ── */
   .servicio-nav {
-    position: sticky;
+    position: fixed;
     top: 4.5rem;
+    left: 0;
+    right: 0;
     z-index: 10;
     background: var(--color-navy);
     border-bottom: 2px solid var(--color-gold);
@@ -252,6 +254,7 @@ const servicios = [
   .servicios-contenido {
     font-family: var(--font-display);
     font-weight: 300;
+    padding-top: 3.2rem;
   }
 
   .servicio-seccion {
@@ -349,7 +352,7 @@ const servicios = [
     .ramo-imagen img { height: 260px; }
     .requisitos-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .ramo-cta-inner { flex-direction: column; }
-    .servicio-nav { top: 4rem; }
+    .servicio-nav { top: 4rem; left: 0; right: 0; }
   }
 </style>
 
