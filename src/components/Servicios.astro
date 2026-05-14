@@ -134,23 +134,59 @@ const servicios = [
     margin-bottom: 3rem;
   }
 
+  @property --gradient-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes borderSpin {
+    to { --gradient-angle: 360deg; }
+  }
+
   .servicio-card {
     display: flex;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.20);
+    background:
+      linear-gradient(rgba(255,255,255,0.20), rgba(255,255,255,0.20)) padding-box,
+      conic-gradient(
+        from var(--gradient-angle),
+        #584827 0%,
+        #c7a03c 20%,
+        #f9de90 30%,
+        #c7a03c 40%,
+        #584827 50%,
+        #c7a03c 70%,
+        #f9de90 80%,
+        #c7a03c 90%,
+        #584827 100%
+      ) border-box;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.28);
-    border-top: 3px solid var(--color-gold);
+    border: 2px solid transparent;
     padding: 2.25rem 1.75rem 2rem;
     border-radius: 2px;
     text-decoration: none;
     color: inherit;
-    transition: background 0.25s, box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+    transition: box-shadow 0.25s, transform 0.25s;
+    animation: borderSpin 5s linear infinite;
   }
 
   .servicio-card:hover {
-    background: rgba(255, 255, 255, 0.42);
+    background:
+      linear-gradient(rgba(255,255,255,0.42), rgba(255,255,255,0.42)) padding-box,
+      conic-gradient(
+        from var(--gradient-angle),
+        #584827 0%,
+        #c7a03c 20%,
+        #f9de90 30%,
+        #c7a03c 40%,
+        #584827 50%,
+        #c7a03c 70%,
+        #f9de90 80%,
+        #c7a03c 90%,
+        #584827 100%
+      ) border-box;
     box-shadow: 0 14px 32px rgba(13,27,46,0.22);
     transform: translateY(-4px);
   }
