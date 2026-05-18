@@ -31,11 +31,15 @@ const servicios = [
     <img src={`${base}/images/inmob.jpg`} alt="Servicios Inmobiliarios" />
   </div>
 
-  <!-- Barra de navegación sticky -->
+  <!-- Barra de navegación -->
   <nav class="servicio-nav" id="servicioNav">
     <div class="servicio-nav-inner">
-      {servicios.map(s => (
-        <a href={`#${s.id}`} class="nav-pill" data-target={s.id}>{s.label}</a>
+      {servicios.map((s, i) => (
+        <button
+          type="button"
+          class={`nav-pill ${i === 0 ? 'active' : ''}`}
+          data-target={s.id}
+        >{s.label}</button>
       ))}
     </div>
   </nav>
@@ -43,7 +47,7 @@ const servicios = [
   <!-- Secciones de servicios -->
   <div class="servicios-contenido">
 
-    <section class="servicio-seccion" id="compraventa">
+    <section class="servicio-seccion active" id="compraventa">
       <div class="container">
         <h2>Compraventa de Inmuebles</h2>
         <p class="servicio-desc">Formalizamos jurídicamente la transmisión de propiedad de bienes raíces entre particulares o con personas morales, garantizando la certeza legal de la operación ante el Registro Público de la Propiedad.</p>
@@ -232,8 +236,11 @@ const servicios = [
     letter-spacing: 0.05em;
     text-transform: uppercase;
     white-space: nowrap;
+    background: transparent;
+    border: none;
     border-bottom: 2px solid transparent;
     margin-bottom: -2px;
+    cursor: pointer;
     transition: color 0.2s, border-color 0.2s;
     text-decoration: none;
   }
@@ -254,8 +261,20 @@ const servicios = [
   }
 
   .servicio-seccion {
+    display: none;
     padding: 4rem 0;
     background: var(--color-white);
+    min-height: 50vh;
+  }
+
+  .servicio-seccion.active {
+    display: block;
+    animation: fadeInPanel 0.35s ease;
+  }
+
+  @keyframes fadeInPanel {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .servicio-seccion--alt {
@@ -352,32 +371,27 @@ const servicios = [
 </style>
 
 <script>
-  // Highlight active nav pill on scroll
+  // Tab-style switching: show only the selected service
   const sections = document.querySelectorAll<HTMLElement>('.servicio-seccion');
-  const pills    = document.querySelectorAll<HTMLAnchorElement>('.nav-pill');
+  const pills    = document.querySelectorAll<HTMLButtonElement>('.nav-pill');
+  const nav      = document.getElementById('servicioNav');
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        pills.forEach(p => {
-          p.classList.toggle('active', p.dataset.target === id);
-        });
-      }
-    });
-  }, { rootMargin: '-40% 0px -55% 0px' });
-
-  sections.forEach(s => observer.observe(s));
-
-  // Smooth scroll
   pills.forEach(pill => {
-    pill.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.getElementById(pill.dataset.target!);
-      if (target) {
-        const offset = 130;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
+    pill.addEventListener('click', () => {
+      const targetId = pill.dataset.target!;
+
+      pills.forEach(p => p.classList.toggle('active', p === pill));
+      sections.forEach(s => s.classList.toggle('active', s.id === targetId));
+
+      // Scroll back to the nav bar if it's not in view, so user sees the new title
+      if (nav) {
+        const rect = nav.getBoundingClientRect();
+        if (rect.top < 0 || rect.bottom > window.innerHeight) {
+          window.scrollTo({
+            top: nav.offsetTop - 80,
+            behavior: 'smooth',
+          });
+        }
       }
     });
   });
