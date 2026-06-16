@@ -4,98 +4,114 @@ const bg = `${base}/images/fondonotaria.jpg`;
 ---
 
 <section class="section nosotros-section" id="nosotros" style={`background-image: url('${bg}')`}>
+
+  <!-- "56" fantasma de fondo -->
+  <span class="nosotros-ghost" aria-hidden="true">56</span>
+
   <div class="container">
 
-    <!-- Intro principal -->
-    <div class="nosotros-intro">
-      <p class="section-subtitle reveal" style="--delay: 0s">Fe Pública y Confianza</p>
-      <h2 class="nosotros-heading reveal" style="--delay: 0.08s">Sobre Nosotros</h2>
-      <p class="nosotros-notario reveal" style="--delay: 0.16s">Lic. Sergio de Jesús Gil Valdez</p>
-      <div class="section-divider reveal" style="--delay: 0.24s"></div>
+    <!-- Header editorial -->
+    <header class="nosotros-header">
+      <div class="nosotros-eyebrow reveal" style="--delay: 0s">
+        <span class="eyebrow-line"></span>
+        <span>Fe Pública y Confianza</span>
+      </div>
+      <h2 class="nosotros-titulo reveal" style="--delay: 0.08s">
+        <span class="titulo-small">Sobre</span>
+        <span class="titulo-large">Nosotros</span>
+      </h2>
+    </header>
 
-      <p class="nosotros-lead reveal" style="--delay: 0.3s">
-        Más de 15 años de trayectoria jurídica, 5 de ellos como Notario Público, brindando seguridad y certeza legal a personas y empresas.
-        Atención personalizada, trámites ágiles y asesoría de primer nivel.
-      </p>
+    <!-- Grid editorial asimétrico -->
+    <div class="nosotros-grid">
 
-      <div class="nosotros-actions reveal" style="--delay: 0.38s">
-        <a href={`${base}/#servicios`} class="btn btn-outline-dark">Ver servicios</a>
+      <!-- Columna texto -->
+      <div class="nosotros-col-texto">
+        <p class="nosotros-notario reveal" style="--delay: 0.14s">Lic. Sergio de Jesús Gil Valdez</p>
+        <div class="section-divider reveal" style="--delay: 0.2s"></div>
+
+        <p class="nosotros-lead reveal" style="--delay: 0.26s">
+          Más de 15 años de trayectoria jurídica, 5 de ellos como Notario Público,
+          brindando seguridad y certeza legal a personas y empresas. Atención
+          personalizada, trámites ágiles y asesoría de primer nivel.
+        </p>
+
+        <div class="nosotros-actions reveal" style="--delay: 0.32s">
+          <a href={`${base}/#servicios`} class="btn btn-outline-dark">Ver servicios</a>
+        </div>
+
+        <div class="nosotros-body">
+          <p class="reveal" style="--delay: 0.12s">
+            Somos una notaría con más de 15 años de trayectoria al servicio de Santa Catarina
+            y la Zona Metropolitana de Monterrey, brindando certeza jurídica a familias,
+            empresas y particulares.
+          </p>
+          <p class="reveal" style="--delay: 0.2s">
+            Ofrecemos un servicio ágil y profesional, apegado al marco legal vigente, con la
+            atención cercana y personalizada que cada cliente merece. Somos miembros activos
+            del Colegio de Notarios Públicos del Estado de Nuevo León y del Colegio Nacional
+            del Notariado Mexicano.
+          </p>
+        </div>
       </div>
 
-      <div class="nosotros-stats reveal" style="--delay: 0.44s">
-        <div class="stat">
-          <span class="stat-num">+15</span>
-          <span class="stat-label">Años de experiencia</span>
+      <!-- Columna foto con marco editorial dorado -->
+      <div class="nosotros-col-foto reveal reveal--right" style="--delay: 0.2s">
+        <div class="foto-wrapper">
+          <img
+            src={`${base}/images/notario1.jpg`}
+            alt="Lic. Sergio de Jesús Gil Valdez, Notario Público No. 56"
+          />
+          <div class="foto-credencial">
+            <span class="cred-titulo">Notario Público No. 56</span>
+            <span class="cred-lugar">Santa Catarina, Nuevo León</span>
+          </div>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num" id="counter-escrituras">+0</span>
-          <span class="stat-label">Escrituras firmadas</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">100%</span>
-          <span class="stat-label">Respaldo legal</span>
-        </div>
+      </div>
+
+    </div>
+
+    <!-- Banda de estadísticas -->
+    <div class="nosotros-stats reveal" style="--delay: 0.05s">
+      <div class="stat-item">
+        <span class="stat-num">+15</span>
+        <span class="stat-label">Años de<br/>experiencia</span>
+      </div>
+      <div class="stat-divider-v"></div>
+      <div class="stat-item">
+        <span class="stat-num" id="counter-escrituras">+0</span>
+        <span class="stat-label">Escrituras<br/>firmadas</span>
+      </div>
+      <div class="stat-divider-v"></div>
+      <div class="stat-item">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Respaldo<br/>legal</span>
       </div>
     </div>
 
-    <!-- Separador dorado entre intro y columnas -->
-    <div class="nosotros-separador reveal"></div>
-
-    <!-- Layout en dos columnas → texto + foto -->
-    <div class="nosotros-cols">
-      <div class="nosotros-text">
-        <h3 class="nosotros-subheading reveal">Una notaría con historia y compromiso</h3>
-        <p class="reveal" style="--delay: 0.1s">
-          Somos una notaría con más de 15 años de trayectoria al servicio de Santa Catarina
-          y la Zona Metropolitana de Monterrey, brindando certeza jurídica a familias,
-          empresas y particulares.
-        </p>
-        <p class="reveal" style="--delay: 0.18s">
-          Ofrecemos un servicio ágil y profesional, apegado al marco legal vigente, con la
-          atención cercana y personalizada que cada cliente merece. Nuestro equipo de abogados
-          acompaña cada trámite con claridad, eficiencia y discreción.
-        </p>
-        <p class="reveal" style="--delay: 0.26s">
-          Somos miembros activos del Colegio de Notarios Públicos del Estado de Nuevo León
-          y del Colegio Nacional del Notariado Mexicano.
-        </p>
-
-        <ul class="valores-list">
-          <li class="reveal" style="--delay: 0.32s">
-            <span class="valor-icon">✦</span>
-            <div>
-              <strong>Integridad</strong>
-              <span>Actuamos siempre conforme a la ley y la ética profesional.</span>
-            </div>
-          </li>
-          <li class="reveal" style="--delay: 0.42s">
-            <span class="valor-icon">✦</span>
-            <div>
-              <strong>Confidencialidad</strong>
-              <span>Todos los asuntos son tratados con absoluta discreción.</span>
-            </div>
-          </li>
-          <li class="reveal" style="--delay: 0.52s">
-            <span class="valor-icon">✦</span>
-            <div>
-              <strong>Agilidad</strong>
-              <span>Trámites eficientes sin sacrificar la calidad jurídica.</span>
-            </div>
-          </li>
-        </ul>
+    <!-- Valores: tiras horizontales numeradas -->
+    <div class="nosotros-valores">
+      <div class="valor-strip reveal" style="--delay: 0s">
+        <span class="valor-num">01</span>
+        <strong class="valor-titulo">Integridad</strong>
+        <span class="valor-desc">Actuamos siempre conforme a la ley y la ética profesional.</span>
+        <span class="valor-linea" aria-hidden="true"></span>
       </div>
-
-      <div class="nosotros-foto reveal reveal--right" style="--delay: 0.15s">
-        <img
-          src={`${base}/images/notario1.jpg`}
-          alt="Lic. Sergio de Jesús Gil Valdez, Notario Público No. 56"
-        />
+      <div class="valor-strip reveal" style="--delay: 0.12s">
+        <span class="valor-num">02</span>
+        <strong class="valor-titulo">Confidencialidad</strong>
+        <span class="valor-desc">Todos los asuntos son tratados con absoluta discreción.</span>
+        <span class="valor-linea" aria-hidden="true"></span>
+      </div>
+      <div class="valor-strip reveal" style="--delay: 0.24s">
+        <span class="valor-num">03</span>
+        <strong class="valor-titulo">Agilidad</strong>
+        <span class="valor-desc">Trámites eficientes sin sacrificar la calidad jurídica.</span>
+        <span class="valor-linea" aria-hidden="true"></span>
       </div>
     </div>
 
-    <!-- Horario debajo del contenido principal -->
+    <!-- Horario -->
     <div class="horario-bottom reveal">
       <p class="horario-label">Horario de Atención</p>
       <div class="horario-grid">
@@ -120,22 +136,24 @@ const bg = `${base}/images/fondonotaria.jpg`;
 </section>
 
 <style>
+  /* ── Sección base ── */
   .nosotros-section {
     position: relative;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    padding: 9rem 0;
+    padding: 10rem 0 8rem;
     font-family: var(--font-display);
     font-weight: 300;
+    overflow: hidden;
   }
 
   .nosotros-section::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(8, 20, 40, 0.82);
+    background: rgba(8, 20, 40, 0.90);
     z-index: 0;
   }
 
@@ -144,19 +162,344 @@ const bg = `${base}/images/fondonotaria.jpg`;
     z-index: 1;
   }
 
-  /* ── Animaciones de aparición al hacer scroll ── */
+  /* ── "56" fantasma ── */
+  .nosotros-ghost {
+    position: absolute;
+    top: -3rem;
+    right: -3vw;
+    font-family: var(--font-display);
+    font-size: clamp(16rem, 28vw, 34rem);
+    font-weight: 800;
+    color: rgba(158, 124, 63, 0.05);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Header editorial ── */
+  .nosotros-header {
+    margin-bottom: 5rem;
+  }
+
+  .nosotros-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .eyebrow-line {
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  .nosotros-eyebrow span:last-child {
+    color: var(--color-gold);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .nosotros-titulo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .titulo-small {
+    font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.15em;
+  }
+
+  .titulo-large {
+    font-size: clamp(4rem, 10vw, 8.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-white);
+    text-transform: uppercase;
+    line-height: 0.88;
+  }
+
+  /* ── Grid editorial ── */
+  .nosotros-grid {
+    display: grid;
+    grid-template-columns: 1fr 44%;
+    gap: 5rem;
+    align-items: start;
+    margin-bottom: 6rem;
+  }
+
+  .nosotros-notario {
+    color: var(--color-gold-pale);
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+  }
+
+  .nosotros-lead {
+    color: rgba(255,255,255,0.92);
+    font-size: clamp(1rem, 1.8vw, 1.18rem);
+    line-height: 1.8;
+    margin-top: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .nosotros-actions {
+    margin-bottom: 2.5rem;
+  }
+
+  .nosotros-body p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.92rem;
+    line-height: 1.95;
+    margin-bottom: 1rem;
+  }
+
+  /* ── Foto con marco dorado desplazado ── */
+  .nosotros-col-foto {
+    position: relative;
+    padding: 14px 0 0 14px;
+  }
+
+  .foto-wrapper {
+    position: relative;
+  }
+
+  /* Marco dorado desplazado */
+  .foto-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -14px;
+    left: -14px;
+    right: 14px;
+    bottom: 14px;
+    border: 1px solid rgba(158, 124, 63, 0.55);
+    pointer-events: none;
+    z-index: 2;
+    transition: border-color 0.4s ease;
+  }
+
+  .nosotros-col-foto:hover .foto-wrapper::before {
+    border-color: rgba(158, 124, 63, 0.85);
+  }
+
+  .foto-wrapper img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Credencial sobre la foto */
+  .foto-credencial {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+      to top,
+      rgba(8, 20, 40, 0.95) 0%,
+      rgba(8, 20, 40, 0.55) 55%,
+      transparent 100%
+    );
+    padding: 2.5rem 1.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    z-index: 3;
+  }
+
+  .cred-titulo {
+    color: var(--color-gold-pale);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .cred-lugar {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── Banda de estadísticas ── */
+  .nosotros-stats {
+    display: flex;
+    align-items: stretch;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 5rem;
+  }
+
+  .stat-item {
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 3rem 2.5rem;
+  }
+
+  .stat-num {
+    color: var(--color-gold-pale);
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4.5vw, 3.75rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  .stat-divider-v {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+
+  /* ── Valores: tiras horizontales ── */
+  .nosotros-valores {
+    margin-bottom: 5rem;
+  }
+
+  .valor-strip {
+    display: grid;
+    grid-template-columns: 3rem 14rem 1fr 2rem;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 1.6rem 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    transition: background 0.3s ease;
+    cursor: default;
+  }
+
+  .valor-strip:last-child {
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .valor-strip:hover {
+    background: rgba(158, 124, 63, 0.03);
+  }
+
+  .valor-num {
+    color: var(--color-gold);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+  }
+
+  .valor-titulo {
+    color: var(--color-white);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .valor-desc {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.875rem;
+    line-height: 1.65;
+  }
+
+  .valor-linea {
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--color-gold);
+    opacity: 0.4;
+    transition: width 0.35s ease, opacity 0.35s ease;
+    justify-self: end;
+  }
+
+  .valor-strip:hover .valor-linea {
+    width: 32px;
+    opacity: 0.85;
+  }
+
+  /* ── Horario ── */
+  .horario-bottom {
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .horario-label {
+    color: var(--color-gold);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  .horario-grid {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .horario-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .horario-dia {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .horario-hora {
+    color: var(--color-gold-pale);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .horario-sep {
+    width: 1px;
+    height: 2rem;
+    background: rgba(255,255,255,0.15);
+    flex-shrink: 0;
+  }
+
+  /* ── Animaciones reveal ── */
   .reveal {
     opacity: 0;
     transform: translateY(28px);
     transition:
-      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: var(--delay, 0s);
     will-change: opacity, transform;
   }
 
   .reveal--right {
-    transform: translateX(40px);
+    transform: translateX(44px);
   }
 
   .reveal.is-visible {
@@ -165,256 +508,45 @@ const bg = `${base}/images/fondonotaria.jpg`;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .reveal {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
+    .reveal { opacity: 1; transform: none; transition: none; }
   }
 
-  /* Intro principal */
-  .nosotros-intro {
-    max-width: 760px;
-    margin-bottom: 2.5rem;
-  }
-
-  .nosotros-heading {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4.5vw, 2.75rem);
-    color: var(--color-white);
-    line-height: 1.15;
-    margin-bottom: 0.5rem;
-  }
-
-  .nosotros-notario {
-    color: var(--color-gold-pale);
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.05rem;
-    letter-spacing: 0.03em;
-    margin-bottom: 0.5rem;
-  }
-
-  .nosotros-lead {
-    color: rgba(255,255,255,0.92);
-    font-size: clamp(1.1rem, 3vw, 1.4rem);
-    line-height: 1.7;
-    margin-top: 1.25rem;
-    margin-bottom: 2rem;
-    max-width: 720px;
-  }
-
-  .nosotros-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
-  }
-
-  .nosotros-stats {
-    display: flex;
-    align-items: center;
-    gap: 1.75rem;
-    flex-wrap: wrap;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.2);
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .stat-num {
-    color: var(--color-gold-pale);
-    font-family: var(--font-display);
-    font-size: 1.85rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-
-  .stat-label {
-    color: rgba(255,255,255,0.82);
-    font-size: 0.78rem;
-    letter-spacing: 0.05em;
-    margin-top: 0.35rem;
-  }
-
-  .stat-divider {
-    width: 1px;
-    height: 2.75rem;
-    background: rgba(255,255,255,0.2);
-  }
-
-  /* Separador dorado entre intro y columnas */
-  .nosotros-separador {
-    width: 48px;
-    height: 1px;
-    background: var(--color-gold);
-    opacity: 0.6;
-    margin-bottom: 2.5rem;
-  }
-
-  .nosotros-cols {
-    display: grid;
-    grid-template-columns: 1fr 420px;
-    gap: 3rem;
-    align-items: start;
-  }
-
-  .nosotros-foto {
-    border-radius: 2px;
-    overflow: hidden;
-    flex-shrink: 0;
-    aspect-ratio: 3 / 4;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-  }
-
-  .nosotros-foto img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  /* h3: claramente distinto del lead */
-  .nosotros-subheading {
-    font-family: var(--font-display);
-    color: var(--color-white);
-    font-size: 1.15rem;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    margin-bottom: 1.25rem;
-    line-height: 1.35;
-    text-transform: uppercase;
-  }
-
-  .nosotros-text p {
-    color: rgba(255,255,255,0.82);
-    margin-bottom: 1.25rem;
-    line-height: 1.85;
-  }
-
-  /* Valores — señales de confianza visualmente reforzadas */
-  .valores-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-top: 2rem;
-    padding: 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .valores-list li {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    padding: 1rem 1rem 1rem 1.15rem;
-    border-left: 2px solid rgba(158,124,63,0.35);
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    transition: border-left-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
-    cursor: default;
-  }
-
-  .valores-list li:hover {
-    border-left-color: var(--color-gold);
-    background: rgba(255,255,255,0.04);
-    transform: translateX(4px);
-  }
-
-  .valor-icon {
-    color: var(--color-gold);
-    font-size: 0.8rem;
-    flex-shrink: 0;
-    margin-top: 0.25rem;
-  }
-
-  .valores-list strong {
-    display: block;
-    color: var(--color-white);
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 0.2rem;
-    letter-spacing: 0.02em;
-  }
-
-  .valores-list span {
-    color: rgba(255,255,255,0.82);
-    font-size: 0.875rem;
-    line-height: 1.55;
-  }
-
-  /* Horario */
-  .horario-bottom {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.2);
-  }
-
-  .horario-label {
-    color: var(--color-gold);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-
-  .horario-grid {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .horario-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .horario-dia {
-    color: rgba(255,255,255,0.82);
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .horario-hora {
-    color: var(--color-gold-pale);
-    font-size: 1.05rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-  }
-
-  .horario-sep {
-    width: 1px;
-    height: 2.5rem;
-    background: rgba(255,255,255,0.2);
-    flex-shrink: 0;
-  }
-
-  @media (max-width: 860px) {
-    .nosotros-intro {
-      margin-bottom: 2rem;
-    }
-    .nosotros-cols {
+  /* ── Responsive ── */
+  @media (max-width: 960px) {
+    .nosotros-grid {
       grid-template-columns: 1fr;
+      gap: 3rem;
     }
-    .nosotros-foto {
-      max-width: 340px;
-      aspect-ratio: 4 / 3;
+    .nosotros-col-foto {
+      max-width: 400px;
     }
+    .nosotros-ghost {
+      font-size: clamp(10rem, 38vw, 18rem);
+    }
+    .valor-strip {
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1.25rem;
+    }
+    .valor-desc, .valor-linea { display: none; }
+    .stat-item { padding: 2.5rem 1.5rem; }
   }
 
   @media (max-width: 600px) {
-    .nosotros-section { padding: 5rem 0; }
+    .nosotros-section { padding: 6rem 0 5rem; }
+    .titulo-large { font-size: clamp(3rem, 16vw, 5rem); }
+    .nosotros-stats {
+      flex-wrap: wrap;
+      border: none;
+      gap: 0;
+    }
+    .stat-item {
+      flex: 0 0 50%;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-divider-v { display: none; }
     .horario-sep { display: none; }
-    .horario-grid { gap: 1.25rem; }
-    .stat-divider { display: none; }
-    .nosotros-stats { gap: 1.5rem 2rem; }
-    .valores-list li:hover { transform: none; }
+    .horario-grid { gap: 1.5rem; }
   }
 </style>
 
@@ -430,10 +562,11 @@ const bg = `${base}/images/fondonotaria.jpg`;
         }
       });
     },
-    { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+    { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
   );
   revealEls.forEach(el => revealObserver.observe(el));
 
+  // Counter escrituras
   const el = document.getElementById('counter-escrituras');
   if (el) {
     const target = 1000;
@@ -446,7 +579,6 @@ const bg = `${base}/images/fondonotaria.jpg`;
       const start = performance.now();
       const tick = (now: number) => {
         const progress = Math.min((now - start) / duration, 1);
-        // easeOutQuart — arranca rápido y desacelera al llegar a 1000
         const eased = 1 - Math.pow(1 - progress, 4);
         const value = Math.floor(eased * target);
         el.textContent = `+${value.toLocaleString('es-MX')}`;
