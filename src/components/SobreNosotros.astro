@@ -89,26 +89,32 @@ const bg = `${base}/images/fondonotaria.jpg`;
       </div>
     </div>
 
-    <!-- Valores: tiras horizontales numeradas -->
+    <!-- Valores: tarjetas modernas -->
     <div class="nosotros-valores">
-      <div class="valor-strip reveal" style="--delay: 0s">
-        <span class="valor-num">01</span>
+      <article class="valor-card reveal" style="--delay: 0s">
+        <span class="valor-num" aria-hidden="true">01</span>
+        <div class="valor-top">
+          <span class="valor-rule"></span>
+        </div>
         <strong class="valor-titulo">Integridad</strong>
         <span class="valor-desc">Actuamos siempre conforme a la ley y la ética profesional.</span>
-        <span class="valor-linea" aria-hidden="true"></span>
-      </div>
-      <div class="valor-strip reveal" style="--delay: 0.12s">
-        <span class="valor-num">02</span>
+      </article>
+      <article class="valor-card reveal" style="--delay: 0.12s">
+        <span class="valor-num" aria-hidden="true">02</span>
+        <div class="valor-top">
+          <span class="valor-rule"></span>
+        </div>
         <strong class="valor-titulo">Confidencialidad</strong>
         <span class="valor-desc">Todos los asuntos son tratados con absoluta discreción.</span>
-        <span class="valor-linea" aria-hidden="true"></span>
-      </div>
-      <div class="valor-strip reveal" style="--delay: 0.24s">
-        <span class="valor-num">03</span>
+      </article>
+      <article class="valor-card reveal" style="--delay: 0.24s">
+        <span class="valor-num" aria-hidden="true">03</span>
+        <div class="valor-top">
+          <span class="valor-rule"></span>
+        </div>
         <strong class="valor-titulo">Agilidad</strong>
         <span class="valor-desc">Trámites eficientes sin sacrificar la calidad jurídica.</span>
-        <span class="valor-linea" aria-hidden="true"></span>
-      </div>
+      </article>
     </div>
 
     <!-- Horario -->
@@ -390,64 +396,104 @@ const bg = `${base}/images/fondonotaria.jpg`;
     align-self: stretch;
   }
 
-  /* ── Valores: tiras horizontales ── */
+  /* ── Valores: tarjetas modernas ── */
   .nosotros-valores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
     margin-bottom: 5rem;
   }
 
-  .valor-strip {
-    display: grid;
-    grid-template-columns: 3rem 14rem 1fr 2rem;
-    align-items: center;
-    gap: 2.5rem;
-    padding: 1.6rem 0;
-    border-top: 1px solid rgba(255,255,255,0.07);
-    transition: background 0.3s ease;
+  .valor-card {
+    position: relative;
+    padding: 2.5rem 2rem 2.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: background 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
     cursor: default;
   }
 
-  .valor-strip:last-child {
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+  .valor-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      120% 100% at 0% 0%,
+      rgba(158, 124, 63, 0.10) 0%,
+      transparent 55%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
   }
 
-  .valor-strip:hover {
-    background: rgba(158, 124, 63, 0.03);
+  .valor-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(158, 124, 63, 0.45);
+    transform: translateY(-6px);
   }
 
+  .valor-card:hover::after {
+    opacity: 1;
+  }
+
+  /* Número grande de marca de agua */
   .valor-num {
-    color: var(--color-gold);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
+    position: absolute;
+    top: 0.5rem;
+    right: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: rgba(158, 124, 63, 0.10);
+    letter-spacing: -0.04em;
+    transition: color 0.4s ease;
+    z-index: 0;
+  }
+
+  .valor-card:hover .valor-num {
+    color: rgba(158, 124, 63, 0.20);
+  }
+
+  .valor-top {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .valor-rule {
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: var(--color-gold);
+    transition: width 0.4s ease;
+  }
+
+  .valor-card:hover .valor-rule {
+    width: 54px;
   }
 
   .valor-titulo {
+    position: relative;
+    z-index: 1;
+    display: block;
     color: var(--color-white);
-    font-size: 0.95rem;
+    font-size: 1.15rem;
     font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
   }
 
   .valor-desc {
-    color: rgba(255,255,255,0.55);
-    font-size: 0.875rem;
-    line-height: 1.65;
-  }
-
-  .valor-linea {
+    position: relative;
+    z-index: 1;
     display: block;
-    width: 20px;
-    height: 1px;
-    background: var(--color-gold);
-    opacity: 0.4;
-    transition: width 0.35s ease, opacity 0.35s ease;
-    justify-self: end;
-  }
-
-  .valor-strip:hover .valor-linea {
-    width: 32px;
-    opacity: 0.85;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+    line-height: 1.7;
   }
 
   /* ── Horario ── */
@@ -535,11 +581,10 @@ const bg = `${base}/images/fondonotaria.jpg`;
     .nosotros-ghost {
       font-size: clamp(10rem, 38vw, 18rem);
     }
-    .valor-strip {
-      grid-template-columns: 2.5rem 1fr;
-      gap: 1.25rem;
+    .nosotros-valores {
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
-    .valor-desc, .valor-linea { display: none; }
     .stat-item { padding: 2.5rem 1.5rem; }
   }
 
