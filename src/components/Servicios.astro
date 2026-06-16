@@ -45,9 +45,14 @@ const servicios = [
 <section class="section servicios-section" id="servicios" style={`background-image: url('${bg}')`}>
   <div class="container">
     <div class="servicios-header">
-      <p class="section-subtitle">Lo que hacemos</p>
-      <h2 class="section-title">Servicios Notariales</h2>
-      <div class="section-divider"></div>
+      <div class="servicios-eyebrow">
+        <span class="eyebrow-line"></span>
+        <span>Lo que hacemos</span>
+      </div>
+      <h2 class="servicios-titulo">
+        <span class="titulo-small">Servicios</span>
+        <span class="titulo-large">Notariales</span>
+      </h2>
       <p class="servicios-intro">
         Cubrimos los principales ramos del derecho notarial. Selecciona un área para
         conocer el detalle de los trámites que ofrecemos.
@@ -111,20 +116,69 @@ const servicios = [
   }
 
   .servicios-header {
-    max-width: 580px;
-    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-bottom: 3.5rem;
   }
 
-  .servicios-header :global(.section-subtitle) {
-    color: var(--color-gold-pale);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  /* Eyebrow estilo editorial */
+  .servicios-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .eyebrow-line {
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--color-gold);
+    flex-shrink: 0;
+  }
+
+  .servicios-eyebrow span:last-child {
+    color: var(--color-gold);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+
+  /* Título editorial igual que Sobre Nosotros */
+  .servicios-titulo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    margin: 0 0 2rem;
+  }
+
+  .titulo-small {
+    font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.15em;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+  }
+
+  .titulo-large {
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--color-white);
+    text-transform: uppercase;
+    line-height: 0.88;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
   }
 
   .servicios-intro {
-    color: #ffffff;
+    color: rgba(255,255,255,0.75);
     font-size: 1rem;
     line-height: 1.8;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.55);
+    max-width: 540px;
   }
 
   .servicios-grid {
