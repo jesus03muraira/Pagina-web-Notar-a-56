@@ -8,21 +8,21 @@ const bg = `${base}/images/fondonotaria.jpg`;
 
     <!-- Intro principal -->
     <div class="nosotros-intro">
-      <p class="section-subtitle">Fe Pública y Confianza</p>
-      <h2 class="nosotros-heading">Sobre Nosotros</h2>
-      <p class="nosotros-notario">Lic. Sergio de Jesús Gil Valdez</p>
-      <div class="section-divider"></div>
+      <p class="section-subtitle reveal" style="--delay: 0s">Fe Pública y Confianza</p>
+      <h2 class="nosotros-heading reveal" style="--delay: 0.08s">Sobre Nosotros</h2>
+      <p class="nosotros-notario reveal" style="--delay: 0.16s">Lic. Sergio de Jesús Gil Valdez</p>
+      <div class="section-divider reveal" style="--delay: 0.24s"></div>
 
-      <p class="nosotros-lead">
+      <p class="nosotros-lead reveal" style="--delay: 0.3s">
         Más de 15 años de trayectoria jurídica, 5 de ellos como Notario Público, brindando seguridad y certeza legal a personas y empresas.
         Atención personalizada, trámites ágiles y asesoría de primer nivel.
       </p>
 
-      <div class="nosotros-actions">
+      <div class="nosotros-actions reveal" style="--delay: 0.38s">
         <a href={`${base}/#servicios`} class="btn btn-outline-dark">Ver servicios</a>
       </div>
 
-      <div class="nosotros-stats">
+      <div class="nosotros-stats reveal" style="--delay: 0.44s">
         <div class="stat">
           <span class="stat-num">+15</span>
           <span class="stat-label">Años de experiencia</span>
@@ -41,43 +41,43 @@ const bg = `${base}/images/fondonotaria.jpg`;
     </div>
 
     <!-- Separador dorado entre intro y columnas -->
-    <div class="nosotros-separador"></div>
+    <div class="nosotros-separador reveal"></div>
 
     <!-- Layout en dos columnas → texto + foto -->
     <div class="nosotros-cols">
       <div class="nosotros-text">
-        <h3 class="nosotros-subheading">Una notaría con historia y compromiso</h3>
-        <p>
+        <h3 class="nosotros-subheading reveal">Una notaría con historia y compromiso</h3>
+        <p class="reveal" style="--delay: 0.1s">
           Somos una notaría con más de 15 años de trayectoria al servicio de Santa Catarina
           y la Zona Metropolitana de Monterrey, brindando certeza jurídica a familias,
           empresas y particulares.
         </p>
-        <p>
+        <p class="reveal" style="--delay: 0.18s">
           Ofrecemos un servicio ágil y profesional, apegado al marco legal vigente, con la
           atención cercana y personalizada que cada cliente merece. Nuestro equipo de abogados
           acompaña cada trámite con claridad, eficiencia y discreción.
         </p>
-        <p>
+        <p class="reveal" style="--delay: 0.26s">
           Somos miembros activos del Colegio de Notarios Públicos del Estado de Nuevo León
           y del Colegio Nacional del Notariado Mexicano.
         </p>
 
         <ul class="valores-list">
-          <li>
+          <li class="reveal" style="--delay: 0.32s">
             <span class="valor-icon">✦</span>
             <div>
               <strong>Integridad</strong>
               <span>Actuamos siempre conforme a la ley y la ética profesional.</span>
             </div>
           </li>
-          <li>
+          <li class="reveal" style="--delay: 0.42s">
             <span class="valor-icon">✦</span>
             <div>
               <strong>Confidencialidad</strong>
               <span>Todos los asuntos son tratados con absoluta discreción.</span>
             </div>
           </li>
-          <li>
+          <li class="reveal" style="--delay: 0.52s">
             <span class="valor-icon">✦</span>
             <div>
               <strong>Agilidad</strong>
@@ -87,7 +87,7 @@ const bg = `${base}/images/fondonotaria.jpg`;
         </ul>
       </div>
 
-      <div class="nosotros-foto">
+      <div class="nosotros-foto reveal reveal--right" style="--delay: 0.15s">
         <img
           src={`${base}/images/notario1.jpg`}
           alt="Lic. Sergio de Jesús Gil Valdez, Notario Público No. 56"
@@ -96,7 +96,7 @@ const bg = `${base}/images/fondonotaria.jpg`;
     </div>
 
     <!-- Horario debajo del contenido principal -->
-    <div class="horario-bottom">
+    <div class="horario-bottom reveal">
       <p class="horario-label">Horario de Atención</p>
       <div class="horario-grid">
         <div class="horario-item">
@@ -142,6 +142,34 @@ const bg = `${base}/images/fondonotaria.jpg`;
   .nosotros-section .container {
     position: relative;
     z-index: 1;
+  }
+
+  /* ── Animaciones de aparición al hacer scroll ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  .reveal--right {
+    transform: translateX(40px);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 
   /* Intro principal */
@@ -391,6 +419,21 @@ const bg = `${base}/images/fondonotaria.jpg`;
 </style>
 
 <script>
+  // Reveal al hacer scroll
+  const revealEls = document.querySelectorAll('.nosotros-section .reveal');
+  const revealObserver = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+  );
+  revealEls.forEach(el => revealObserver.observe(el));
+
   const el = document.getElementById('counter-escrituras');
   if (el) {
     const target = 1000;
