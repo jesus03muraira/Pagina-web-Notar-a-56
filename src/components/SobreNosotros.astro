@@ -71,24 +71,6 @@ const bg = `${base}/images/fondonotaria.jpg`;
 
     </div>
 
-    <!-- Banda de estadísticas -->
-    <div class="nosotros-stats reveal" style="--delay: 0.05s">
-      <div class="stat-item">
-        <span class="stat-num">+15</span>
-        <span class="stat-label">Años de<br/>experiencia</span>
-      </div>
-      <div class="stat-divider-v"></div>
-      <div class="stat-item">
-        <span class="stat-num" id="counter-escrituras">+0</span>
-        <span class="stat-label">Escrituras<br/>firmadas</span>
-      </div>
-      <div class="stat-divider-v"></div>
-      <div class="stat-item">
-        <span class="stat-num">100%</span>
-        <span class="stat-label">Respaldo<br/>legal</span>
-      </div>
-    </div>
-
     <!-- Valores: tarjetas modernas -->
     <div class="nosotros-valores">
       <article class="valor-card reveal" style="--delay: 0s">
@@ -355,47 +337,6 @@ const bg = `${base}/images/fondonotaria.jpg`;
     letter-spacing: 0.08em;
   }
 
-  /* ── Banda de estadísticas ── */
-  .nosotros-stats {
-    display: flex;
-    align-items: stretch;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    margin-bottom: 5rem;
-  }
-
-  .stat-item {
-    flex: 1;
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    padding: 3rem 2.5rem;
-  }
-
-  .stat-num {
-    color: var(--color-gold-pale);
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 4.5vw, 3.75rem);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-
-  .stat-label {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    line-height: 1.5;
-  }
-
-  .stat-divider-v {
-    width: 1px;
-    background: rgba(255,255,255,0.12);
-    flex-shrink: 0;
-    align-self: stretch;
-  }
-
   /* ── Valores: tarjetas modernas ── */
   .nosotros-valores {
     display: grid;
@@ -585,23 +526,11 @@ const bg = `${base}/images/fondonotaria.jpg`;
       grid-template-columns: 1fr;
       gap: 1rem;
     }
-    .stat-item { padding: 2.5rem 1.5rem; }
   }
 
   @media (max-width: 600px) {
     .nosotros-section { padding: 6rem 0 5rem; }
     .titulo-large { font-size: clamp(3rem, 16vw, 5rem); }
-    .nosotros-stats {
-      flex-wrap: wrap;
-      border: none;
-      gap: 0;
-    }
-    .stat-item {
-      flex: 0 0 50%;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .stat-divider-v { display: none; }
     .horario-sep { display: none; }
     .horario-grid { gap: 1.5rem; }
   }
@@ -622,33 +551,4 @@ const bg = `${base}/images/fondonotaria.jpg`;
     { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
   );
   revealEls.forEach(el => revealObserver.observe(el));
-
-  // Counter escrituras
-  const el = document.getElementById('counter-escrituras');
-  if (el) {
-    const target = 1000;
-    const duration = 3000;
-    let started = false;
-
-    const run = () => {
-      if (started) return;
-      started = true;
-      const start = performance.now();
-      const tick = (now: number) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 4);
-        const value = Math.floor(eased * target);
-        el.textContent = `+${value.toLocaleString('es-MX')}`;
-        if (progress < 1) requestAnimationFrame(tick);
-        else el.textContent = '+1,000';
-      };
-      requestAnimationFrame(tick);
-    };
-
-    const observer = new IntersectionObserver(
-      entries => { if (entries[0].isIntersecting) run(); },
-      { threshold: 0.4 }
-    );
-    observer.observe(el);
-  }
 </script>
