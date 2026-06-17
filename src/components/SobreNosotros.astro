@@ -26,7 +26,7 @@ const bg = `${base}/images/fondonotaria.jpg`;
     <div class="nosotros-grid">
 
       <!-- Columna texto -->
-      <div class="nosotros-col-texto">
+      <div class="nosotros-col-texto" id="nosotros-texto">
         <p class="nosotros-notario reveal" style="--delay: 0.14s">Lic. Sergio de Jesús Gil Valdez</p>
         <div class="section-divider reveal" style="--delay: 0.2s"></div>
 
@@ -56,7 +56,7 @@ const bg = `${base}/images/fondonotaria.jpg`;
       </div>
 
       <!-- Columna foto con marco editorial dorado -->
-      <div class="nosotros-col-foto reveal reveal--right" style="--delay: 0.2s">
+      <div class="nosotros-col-foto reveal reveal--right" style="--delay: 0.2s" id="nosotros-foto">
         <div class="foto-wrapper">
           <img
             src={`${base}/images/notario1.jpg`}
@@ -226,6 +226,11 @@ const bg = `${base}/images/fondonotaria.jpg`;
     gap: 5rem;
     align-items: start;
     margin-bottom: 6rem;
+  }
+
+  #nosotros-texto,
+  #nosotros-foto {
+    will-change: transform;
   }
 
   .nosotros-notario {
@@ -551,4 +556,30 @@ const bg = `${base}/images/fondonotaria.jpg`;
     { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
   );
   revealEls.forEach(el => revealObserver.observe(el));
+
+  // Parallax: foto baja, texto sube al hacer scroll hacia abajo (y viceversa)
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const section = document.querySelector('.nosotros-section') as HTMLElement;
+    const texto   = document.getElementById('nosotros-texto') as HTMLElement;
+    const foto    = document.getElementById('nosotros-foto')  as HTMLElement;
+
+    if (section && texto && foto) {
+      const STRENGTH = 0.07; // qué tanto se mueven (0 = nada, 0.1 = suave)
+
+      const onScroll = () => {
+        const rect     = section.getBoundingClientRect();
+        const viewH    = window.innerHeight;
+        // progress: -1 cuando la sección está abajo de la pantalla, +1 cuando está arriba
+        const center   = rect.top + rect.height / 2 - viewH / 2;
+        const progress = Math.max(-1, Math.min(1, center / (viewH * 0.8)));
+
+        const dy = progress * rect.height * STRENGTH;
+        texto.style.transform = `translateY(${-dy}px)`;
+        foto.style.transform  = `translateY(${dy}px)`;
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+  }
 </script>
