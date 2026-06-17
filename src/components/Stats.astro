@@ -1,0 +1,88 @@
+---
+const stats = [
+  { value: '+15', label: 'Años de experiencia' },
+  { value: '+1,000', label: 'Escrituras firmadas' },
+  { value: '100%', label: 'Respaldo legal' },
+];
+---
+
+<section class="stats-strip">
+  <div class="stats-inner">
+    {stats.map(s => (
+      <div class="stat-card">
+        <span class="stat-value">{s.value}</span>
+        <span class="stat-label">{s.label}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .stats-strip {
+    background: #0e1a2e;
+    padding: 4rem 2rem;
+    font-family: var(--font-display);
+  }
+
+  .stats-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 2.5rem 1.5rem;
+    border: 1px solid rgba(158, 124, 63, 0.2);
+    border-top: 3px solid rgba(158, 124, 63, 0.45);
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.03);
+    cursor: default;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .stat-card:hover {
+    background: rgba(158, 124, 63, 0.12);
+    border-color: rgba(158, 124, 63, 0.8);
+    border-top-color: var(--color-gold);
+    transform: translateY(-3px);
+  }
+
+  .stat-value {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--color-gold);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    transition: color 0.3s ease;
+  }
+
+  .stat-card:hover .stat-value {
+    color: #c9a05a;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    transition: color 0.3s ease;
+  }
+
+  .stat-card:hover .stat-label {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (max-width: 600px) {
+    .stats-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -6,7 +6,6 @@
 
     <!-- Texto izquierda -->
     <div class="tagline-texto reveal">
-      <span class="tagline-eyebrow">Notaría Pública No. 56 · Santa Catarina, N.L.</span>
       <p class="tagline-lead">
         Más de 15 años de trayectoria jurídica, 5 de ellos como Notario Público,
         brindando seguridad y certeza legal a personas y empresas. Atención personalizada,
@@ -29,8 +28,6 @@
 <style>
   .tagline-section {
     background: #0a1628;
-    border-top: 2px solid rgba(158, 124, 63, 0.5);
-    border-bottom: 2px solid rgba(158, 124, 63, 0.5);
     padding: 5rem 0;
     font-family: var(--font-display);
     overflow: hidden;
@@ -50,17 +47,6 @@
   .tagline-texto {
     flex: 1;
     max-width: 640px;
-  }
-
-  .tagline-eyebrow {
-    display: block;
-    color: var(--color-gold);
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    opacity: 0.85;
   }
 
   .tagline-lead {
@@ -84,18 +70,8 @@
     font-weight: 800;
     line-height: 1;
     letter-spacing: -0.04em;
-    color: transparent;
-    -webkit-text-stroke: 1.5px rgba(158, 124, 63, 0.7);
-    position: relative;
-  }
-
-  /* Brillo sutil sobre el número outline */
-  .tagline-num::after {
-    content: '15';
-    position: absolute;
-    inset: 0;
-    color: rgba(158, 124, 63, 0.12);
-    -webkit-text-stroke: 0;
+    color: var(--color-gold);
+    opacity: 0.55;
   }
 
   .tagline-stat-label {
