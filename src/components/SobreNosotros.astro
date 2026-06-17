@@ -30,13 +30,7 @@ const bg = `${base}/images/fondonotaria.jpg`;
         <p class="nosotros-notario reveal" style="--delay: 0.14s">Lic. Sergio de Jesús Gil Valdez</p>
         <div class="section-divider reveal" style="--delay: 0.2s"></div>
 
-        <p class="nosotros-lead reveal" style="--delay: 0.26s">
-          Más de 15 años de trayectoria jurídica, 5 de ellos como Notario Público,
-          brindando seguridad y certeza legal a personas y empresas. Atención
-          personalizada, trámites ágiles y asesoría de primer nivel.
-        </p>
-
-        <div class="nosotros-actions reveal" style="--delay: 0.32s">
+        <div class="nosotros-actions reveal" style="--delay: 0.26s">
           <a href={`${base}/#servicios`} class="btn btn-outline-dark">Ver servicios</a>
         </div>
 
@@ -62,10 +56,6 @@ const bg = `${base}/images/fondonotaria.jpg`;
             src={`${base}/images/notario1.jpg`}
             alt="Lic. Sergio de Jesús Gil Valdez, Notario Público No. 56"
           />
-          <div class="foto-credencial">
-            <span class="cred-titulo">Notario Público No. 56</span>
-            <span class="cred-lugar">Santa Catarina, Nuevo León</span>
-          </div>
         </div>
       </div>
 
@@ -233,6 +223,10 @@ const bg = `${base}/images/fondonotaria.jpg`;
     will-change: transform;
   }
 
+  #nosotros-texto {
+    padding-top: 1.5rem;
+  }
+
   .nosotros-notario {
     color: var(--color-gold-pale);
     font-style: italic;
@@ -241,15 +235,8 @@ const bg = `${base}/images/fondonotaria.jpg`;
     margin-bottom: 0.5rem;
   }
 
-  .nosotros-lead {
-    color: rgba(255,255,255,0.92);
-    font-size: clamp(1rem, 1.8vw, 1.18rem);
-    line-height: 1.8;
-    margin-top: 1.25rem;
-    margin-bottom: 2rem;
-  }
-
   .nosotros-actions {
+    margin-top: 2rem;
     margin-bottom: 2.5rem;
   }
 
@@ -272,32 +259,13 @@ const bg = `${base}/images/fondonotaria.jpg`;
     margin-bottom: 1rem;
   }
 
-  /* ── Foto con marco dorado desplazado ── */
+  /* ── Foto ── */
   .nosotros-col-foto {
     position: relative;
-    padding: 14px 0 0 14px;
   }
 
   .foto-wrapper {
     position: relative;
-  }
-
-  /* Marco dorado desplazado */
-  .foto-wrapper::before {
-    content: '';
-    position: absolute;
-    top: -14px;
-    left: -14px;
-    right: 14px;
-    bottom: 14px;
-    border: 1px solid rgba(158, 124, 63, 0.55);
-    pointer-events: none;
-    z-index: 2;
-    transition: border-color 0.4s ease;
-  }
-
-  .nosotros-col-foto:hover .foto-wrapper::before {
-    border-color: rgba(158, 124, 63, 0.85);
   }
 
   .foto-wrapper img {
@@ -307,39 +275,6 @@ const bg = `${base}/images/fondonotaria.jpg`;
     display: block;
     position: relative;
     z-index: 1;
-  }
-
-  /* Credencial sobre la foto */
-  .foto-credencial {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(
-      to top,
-      rgba(8, 20, 40, 0.95) 0%,
-      rgba(8, 20, 40, 0.55) 55%,
-      transparent 100%
-    );
-    padding: 2.5rem 1.25rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    z-index: 3;
-  }
-
-  .cred-titulo {
-    color: var(--color-gold-pale);
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-
-  .cred-lugar {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
   }
 
   /* ── Valores: tarjetas modernas ── */
@@ -557,29 +492,54 @@ const bg = `${base}/images/fondonotaria.jpg`;
   );
   revealEls.forEach(el => revealObserver.observe(el));
 
-  // Parallax: foto baja, texto sube al hacer scroll hacia abajo (y viceversa)
+  // Parallax suave: al hacer scroll down la foto baja y el texto sube
+  // (y al revés en scroll up). Interpolado con lerp para que sea fluido.
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const section = document.querySelector('.nosotros-section') as HTMLElement;
     const texto   = document.getElementById('nosotros-texto') as HTMLElement;
     const foto    = document.getElementById('nosotros-foto')  as HTMLElement;
 
     if (section && texto && foto) {
-      const STRENGTH = 0.07; // qué tanto se mueven (0 = nada, 0.1 = suave)
+      const TEXT_RANGE = 26; // px: movimiento suave del texto (acotado, no tapa el título)
+      const FOTO_RANGE = 55; // px: la foto se mueve un poco más para dar profundidad
+
+      let targetText = 0, targetFoto = 0;
+      let curText = 0, curFoto = 0;
+      let rafId = 0;
+
+      const computeTargets = () => {
+        const rect  = section.getBoundingClientRect();
+        const viewH = window.innerHeight;
+        // p: +1 cuando la sección entra por abajo, -1 cuando ya salió por arriba
+        const center = rect.top + rect.height / 2 - viewH / 2;
+        const p = Math.max(-1, Math.min(1, center / viewH));
+        targetText = p * TEXT_RANGE;   // scroll down (p baja) → texto sube
+        targetFoto = -p * FOTO_RANGE;  // scroll down (p baja) → foto baja
+      };
+
+      const animate = () => {
+        // lerp hacia el objetivo (0.08 = bien suave)
+        curText += (targetText - curText) * 0.08;
+        curFoto += (targetFoto - curFoto) * 0.08;
+        texto.style.transform = `translateY(${curText.toFixed(2)}px)`;
+        foto.style.transform  = `translateY(${curFoto.toFixed(2)}px)`;
+
+        if (Math.abs(targetText - curText) > 0.1 || Math.abs(targetFoto - curFoto) > 0.1) {
+          rafId = requestAnimationFrame(animate);
+        } else {
+          rafId = 0;
+        }
+      };
 
       const onScroll = () => {
-        const rect     = section.getBoundingClientRect();
-        const viewH    = window.innerHeight;
-        // progress: -1 cuando la sección está abajo de la pantalla, +1 cuando está arriba
-        const center   = rect.top + rect.height / 2 - viewH / 2;
-        const progress = Math.max(-1, Math.min(1, center / (viewH * 0.8)));
-
-        const dy = progress * rect.height * STRENGTH;
-        texto.style.transform = `translateY(${-dy}px)`;
-        foto.style.transform  = `translateY(${dy}px)`;
+        computeTargets();
+        if (!rafId) rafId = requestAnimationFrame(animate);
       };
 
       window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+      window.addEventListener('resize', onScroll, { passive: true });
+      computeTargets();
+      animate();
     }
   }
 </script>
