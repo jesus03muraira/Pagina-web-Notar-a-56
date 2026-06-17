@@ -27,12 +27,6 @@ const bg = `${base}/images/fondonotaria.jpg`;
 
       <!-- Columna texto -->
       <div class="nosotros-col-texto" id="nosotros-texto">
-        <p class="nosotros-notario reveal" style="--delay: 0.14s">Lic. Sergio de Jesús Gil Valdez</p>
-        <div class="section-divider reveal" style="--delay: 0.2s"></div>
-
-        <div class="nosotros-actions reveal" style="--delay: 0.26s">
-          <a href={`${base}/#servicios`} class="btn btn-outline-dark">Ver servicios</a>
-        </div>
 
         <div class="nosotros-body">
           <p class="reveal" style="--delay: 0.12s">
@@ -47,6 +41,14 @@ const bg = `${base}/images/fondonotaria.jpg`;
             del Notariado Mexicano.
           </p>
         </div>
+
+        <div class="section-divider reveal" style="--delay: 0.28s"></div>
+        <p class="nosotros-notario reveal" style="--delay: 0.34s">Lic. Sergio de Jesús Gil Valdez</p>
+
+        <div class="nosotros-actions reveal" style="--delay: 0.40s">
+          <a href={`${base}/#servicios`} class="btn btn-outline-dark">Ver servicios</a>
+        </div>
+
       </div>
 
       <!-- Columna foto con marco editorial dorado -->
@@ -223,20 +225,30 @@ const bg = `${base}/images/fondonotaria.jpg`;
     will-change: transform;
   }
 
-  #nosotros-texto {
-    padding-top: 1.5rem;
+  .nosotros-body {
+    margin-bottom: 2.5rem;
+  }
+
+  .nosotros-body p {
+    color: rgba(255,255,255,0.82);
+    font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+    line-height: 1.9;
+    margin-bottom: 1.4rem;
+    font-weight: 300;
   }
 
   .nosotros-notario {
     color: var(--color-gold-pale);
     font-style: italic;
-    font-size: 1rem;
-    letter-spacing: 0.04em;
-    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+    letter-spacing: 0.06em;
+    margin-top: 1.25rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.85;
   }
 
   .nosotros-actions {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     margin-bottom: 2.5rem;
   }
 
@@ -250,13 +262,6 @@ const bg = `${base}/images/fondonotaria.jpg`;
     background: rgba(158, 124, 63, 0.12);
     color: var(--color-white);
     border-color: var(--color-gold-pale);
-  }
-
-  .nosotros-body p {
-    color: rgba(255,255,255,0.65);
-    font-size: 0.92rem;
-    line-height: 1.95;
-    margin-bottom: 1rem;
   }
 
   /* ── Foto ── */
@@ -500,8 +505,8 @@ const bg = `${base}/images/fondonotaria.jpg`;
     const foto    = document.getElementById('nosotros-foto')  as HTMLElement;
 
     if (section && texto && foto) {
-      const TEXT_RANGE = 26; // px: movimiento suave del texto (acotado, no tapa el título)
-      const FOTO_RANGE = 55; // px: la foto se mueve un poco más para dar profundidad
+      const TEXT_RANGE = 38; // px: movimiento del texto
+      const FOTO_RANGE = 80; // px: la foto se mueve más para dar profundidad
 
       let targetText = 0, targetFoto = 0;
       let curText = 0, curFoto = 0;
