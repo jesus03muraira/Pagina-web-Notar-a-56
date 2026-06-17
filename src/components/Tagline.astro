@@ -1,0 +1,175 @@
+---
+---
+
+<section class="tagline-section">
+  <div class="tagline-inner">
+
+    <!-- Texto izquierda -->
+    <div class="tagline-texto reveal">
+      <span class="tagline-eyebrow">Notaría Pública No. 56 · Santa Catarina, N.L.</span>
+      <p class="tagline-lead">
+        Más de 15 años de trayectoria jurídica, 5 de ellos como Notario Público,
+        brindando seguridad y certeza legal a personas y empresas. Atención personalizada,
+        trámites ágiles y asesoría de primer nivel.
+      </p>
+    </div>
+
+    <!-- Número derecha -->
+    <div class="tagline-stat reveal reveal--right">
+      <span class="tagline-num">15</span>
+      <div class="tagline-stat-label">
+        <span class="label-top">Años</span>
+        <span class="label-bot">de trayectoria</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .tagline-section {
+    background: #0a1628;
+    border-top: 2px solid rgba(158, 124, 63, 0.5);
+    border-bottom: 2px solid rgba(158, 124, 63, 0.5);
+    padding: 5rem 0;
+    font-family: var(--font-display);
+    overflow: hidden;
+  }
+
+  .tagline-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  /* Texto */
+  .tagline-texto {
+    flex: 1;
+    max-width: 640px;
+  }
+
+  .tagline-eyebrow {
+    display: block;
+    color: var(--color-gold);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0.85;
+  }
+
+  .tagline-lead {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* Número grande */
+  .tagline-stat {
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.75rem;
+  }
+
+  .tagline-num {
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 12vw, 10rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(158, 124, 63, 0.7);
+    position: relative;
+  }
+
+  /* Brillo sutil sobre el número outline */
+  .tagline-num::after {
+    content: '15';
+    position: absolute;
+    inset: 0;
+    color: rgba(158, 124, 63, 0.12);
+    -webkit-text-stroke: 0;
+  }
+
+  .tagline-stat-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .label-top {
+    color: var(--color-gold-pale);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .label-bot {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Animaciones reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  .reveal--right {
+    transform: translateX(40px);
+    transition-delay: 0.15s;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .tagline-inner {
+      flex-direction: column;
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+    .tagline-num {
+      font-size: clamp(5rem, 20vw, 7rem);
+    }
+  }
+</style>
+
+<script>
+  const els = document.querySelectorAll('.tagline-section .reveal');
+  const obs = new IntersectionObserver(
+    (entries, o) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          o.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+  els.forEach(el => obs.observe(el));
+</script>
